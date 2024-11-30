@@ -60,8 +60,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
-          setOkMessage(`Đăng nhập thành công: ${data.message}`)
-          Login 
+          setOkMessage(`Đăng nhập thành công: ${data.message}`) 
 
           setTimeout(() => {
             window.location.reload();
