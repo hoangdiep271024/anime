@@ -71,7 +71,7 @@ export default function Introduce() {
     </Box>
 
     <Box>
-      <div style={{display: 'flex', gap: '20px', marginTop: '400px', width: '100vw', justifyContent: 'center', gap: '50px'}}>
+      <div style={{display: 'flex', marginTop: '400px', width: '100vw', justifyContent: 'center', gap: '50px'}}>
         <img src='/image.jpeg' style={{width: '400px', height: 'auto', objectFit: 'cover'}}></img>
         <div style={{width: '30vw'}}>
           <div style={{fontSize: '30px'}}><strong>GIỚI THIỆU ANIMETANGO</strong></div>
