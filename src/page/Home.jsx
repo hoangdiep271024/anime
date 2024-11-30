@@ -11,7 +11,7 @@ export default function Home() {
 
   const fetchFilm = async () => {
     try {
-      const response = await fetch('http://animetangorecommendserver.onrender.com/search', {
+      const response = await fetch('https://animetangobackend.onrender.com/api/anime/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
