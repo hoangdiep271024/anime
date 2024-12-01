@@ -62,9 +62,9 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         if (data.success) {
           setOkMessage(`Đăng nhập thành công: ${data.message}`) 
 
-          // setTimeout(() => {
-          //   window.location.reload();
-          // }, 1500);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
           
         } else {
           const error__alert =`Đăng nhập thất bại: ${data.message}`;
