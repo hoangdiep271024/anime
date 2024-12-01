@@ -1,10 +1,9 @@
-import CssBaseline from "@mui/material/CssBaseline";
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
 import Box from "@mui/material/Box";
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
-import Alert from '@mui/material/Alert';
-import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 const SubmitButton = styled.input`
   width: 40%;
   height: 40px;
@@ -54,7 +53,6 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-        credentials: 'include'
       });
       
       if (response.ok) {
