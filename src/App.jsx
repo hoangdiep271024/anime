@@ -6,6 +6,7 @@ import Signup from "./page/Signup";
 import Introduce from "./page/Introduce";
 import Level from "./page/Level";
 import AccountShow from "./page/AccountShow";
+import FilmDetail from "./page/FilmDetail";
 function App() {
   return (
     <Router>
@@ -14,9 +15,10 @@ function App() {
         <Route path="/welcome" element={<FirstScreen />} />
         <Route path="/home" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/gioi_thieu" element={<Introduce/>}/>
+        <Route path="/introduce" element={<Introduce/>}/>
         <Route path="/level/:level" element= {<Level/>}/>
-        <Route path="/tai_khoan" element= {<AccountShow/>}/>
+        <Route path="/account" element= {<AccountShow/>}/>
+        <Route path="/film/:film_name" element= {<FilmDetail/>}/>
       </Routes>
     </Router>);
 

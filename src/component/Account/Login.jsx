@@ -1,9 +1,10 @@
-import CloseIcon from '@mui/icons-material/Close';
-import Alert from '@mui/material/Alert';
+import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
+import Alert from '@mui/material/Alert';
+import CloseIcon from '@mui/icons-material/Close';
+import { useNavigate } from "react-router-dom";
 const SubmitButton = styled.input`
   width: 40%;
   height: 40px;
@@ -52,14 +53,15 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
       
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
           setOkMessage(`Đăng nhập thành công: ${data.message}`) 
-
+          
+          Login
           setTimeout(() => {
             window.location.reload();
           }, 1500);
@@ -137,6 +139,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         borderRadius: '5px',
         border: '1px solid #b8b2b2',
         height: '35px',
+        width: '100%',
         fontSize: '17px',
         paddingLeft: '5px',
         marginTop: '10px',
@@ -161,6 +164,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         borderRadius: '5px',
         border: '1px solid #b8b2b2',
         height: '35px',
+        width: '100%',
         fontSize: '17px',
         paddingLeft: '5px',
         marginTop: '10px',

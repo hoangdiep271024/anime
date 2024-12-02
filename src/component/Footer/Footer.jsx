@@ -3,7 +3,7 @@ import "./Footer.css";
 import { useTheme } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import "./Footer.css";
+import "./footer.css";
 import Link from "@mui/material/Link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";

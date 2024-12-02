@@ -10,6 +10,8 @@ const FilmListStyled = styled.div`
 `;
 export default function FilmList(props) {
   return (
-    <FilmListStyled>{props.children}</FilmListStyled>
+    <FilmListStyled>
+      {props.children}
+      </FilmListStyled>
   )
 }
