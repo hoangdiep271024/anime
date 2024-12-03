@@ -260,7 +260,7 @@ export default function Header() {
           </Box>
         )}
       </div>
-      <Box sx={{ marginRight: "16px", marginLeft: "20px" , width: 'auto', maxWidth: '17%'}}>
+      <Box sx={{ marginRight: "16px", marginLeft: "20px" , width: 'auto', maxWidth: '14%'}}>
         
         {!isLogin && !loading && <PositionedMenu />}
         {isLogin && !loading && userInfor && <Box><AccountHeader name= {userInfor.full_name} image ={userInfor.user_img}></AccountHeader></Box>}
