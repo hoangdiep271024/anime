@@ -45,8 +45,6 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
   
   const handleSubmit = async (e) => {
      e.preventDefault();
-     console.log('1')
-
     try {
       const response = await fetch('https://animetangobackend.onrender.com/api/login', {
         method: 'POST',
@@ -60,8 +58,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         const data = await response.json();
         if (data.success) {
           setOkMessage(`Đăng nhập thành công: ${data.message}`) 
-          
-          Login
+          localStorage.setItem('jwt', data.jwt)
           setTimeout(() => {
             window.location.reload();
           }, 1500);

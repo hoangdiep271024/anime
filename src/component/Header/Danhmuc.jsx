@@ -9,8 +9,8 @@ export default function Danhmuc() {
 
     // Định nghĩa các URL tương ứng cho từng mục
     const links = [
-        { label: 'Phim lẻ', url: '/category/phim_le' },
-        { label: 'Phim bộ', url: '/category/phim_bo' },
+        { label: 'TV', url: '/category/TV' },
+        { label: 'Ova', url: '/category/Ova' },
     ];
 
     return (

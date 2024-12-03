@@ -24,7 +24,7 @@ const SubmitButton = styled.button`
 
 export default function Profile() {
 
-
+    const jwt = localStorage.getItem('jwt')
     const [login, setLogin] = useState('');
     const [userInfor, setUserInfor] = useState([]);
     const [changeClick, setChangeClick] = useState(false)
@@ -48,10 +48,10 @@ export default function Profile() {
       
       const formData = new FormData();
       formData.append('image', file);
-      
+      formData.append('jwt', jwt);
       try {
         setUploadStatus('Đang tải lên...');
-        const response = await axios.post('/api/uploadImage', formData, {
+        const response = await axios.post('https://animetangobackend.onrender.com/api/uploadImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -66,24 +66,24 @@ export default function Profile() {
         }
       } catch (error) {
         console.error('Lỗi tải lên:', error);
-        setUploadStatus('Tải lên thất bại!');
+        setUploadStatus(`Tải lên thất bại! ${error}`);
       }
       console.log(uploadStatus)
     };
-    
     useEffect(() => {
-      fetch('/api/userInfo', {
+      fetch('https://animetangobackend.onrender.com/api/userInfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({jwt : jwt})
       })
         .then(response => response.json())
         .then(responseData => {
           if(responseData.success){
             setLogin(true)
-            setUserInfor(responseData.userInfo[0])
-            setImage(responseData.userInfo[0].user_img|| defaultImage)
+            setUserInfor(responseData.userInfo)
+            setImage(responseData.userInfo.user_img|| defaultImage)
           }
           else{
             setLogin(false)
@@ -97,6 +97,7 @@ export default function Profile() {
         phone__number: '',
         gmail: '',
         sex:'',
+        jwt: jwt,
       });
     useEffect(() => {
         if (userInfor) {
@@ -104,7 +105,8 @@ export default function Profile() {
             name: userInfor.full_name || '',
             phone__number: userInfor.phone_number || '',
             gmail: userInfor.email || '',
-            sex:userInfor.sex || ''
+            sex:userInfor.sex || '',
+            jwt: jwt,
           });
         }
       }, [userInfor]);
@@ -117,7 +119,7 @@ export default function Profile() {
       };
       const handleSubmit = async () => {
         try {
-          const response = await fetch('/api/userInfo/update', {
+          const response = await fetch('https://animetangobackend.onrender.com/api/userInfo/update', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

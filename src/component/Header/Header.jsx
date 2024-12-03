@@ -30,23 +30,26 @@ export default function Header() {
   const [Levelhover, setLevelhover] = useState(false);
   const [isLogin, setIsLogin ] = useState(false)
   const [userInfor, setUserInfor] = useState([]);
+  const [loading, setLoading] = useState(true)
+  const jwt = localStorage.getItem('jwt')
   useEffect(() => {
     fetch('https://animetangobackend.onrender.com/api/userInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({jwt : jwt})
     })
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData)
         if(responseData.success){
           setIsLogin(true)
-          setUserInfor(responseData.userInfo[0])
+          setUserInfor(responseData.userInfo)
         }
         else{
           setIsLogin(false)
         }
+        setLoading(false)
         
       })
       .catch(error => console.error('Error:', error));
@@ -257,8 +260,9 @@ export default function Header() {
         )}
       </div>
       <Box sx={{ marginRight: "16px", marginLeft: "20px" }}>
-        {!isLogin && <PositionedMenu />}
-        {isLogin && <AccountHeader name= 'hoang diep'></AccountHeader>}
+        
+        {!isLogin && !loading && <PositionedMenu />}
+        {isLogin && !loading && userInfor && <AccountHeader name= {userInfor.full_name} image ={userInfor.user_img}></AccountHeader>}
       </Box>
       <ChangeMode />
     </Box>

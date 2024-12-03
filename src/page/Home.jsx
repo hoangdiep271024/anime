@@ -24,7 +24,7 @@ export default function Home() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+
       } else {
         console.error('Lỗi khi đăng nhập:', response.statusText);
       }

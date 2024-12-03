@@ -21,7 +21,6 @@ export default function NewFilm() {
 
       if (response.ok) {
         const dataa = await response.json();
-        console.log(dataa);
         setData(dataa);
         setVisibleMovies(dataa.slice(0, itemsPerPage));
         setLoading(false); 
@@ -56,30 +55,41 @@ export default function NewFilm() {
       <div style={{ fontSize: '25px', fontFamily: 'monospace', marginLeft: '5%', marginTop: '15px', marginBottom: '15px' }}>
         UPDATE LATEST MOVIE
       </div>
-      <Box sx={{ display: 'flex', marginLeft: '5%', width: '90%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '60px', rotate: '90deg' }} onClick={handlePrev} />
+      <Box sx={{ display: 'flex',marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg' }} onClick={handlePrev} />
         {
-          loading
-            ? Array.from(new Array(itemsPerPage)).map((_, index) => (
-                <Box sx={{display: 'block'}}>
-              <Skeleton key={index} variant="rectangular" width={180} height={255} sx={{ borderRadius: '8px', margin: '10px' }} />
-              <Skeleton key={index} variant="rectangular" width={180} height={30} sx={{ borderRadius: '8px', margin: '10px' }} />
-              </Box>
-            ))
-            : visibleMovies.map((item, key) => (
-              <FilmCard
-                key={key}
-                image={item["Image URL"]}
-                name={item.Name}
-                level={item.JapaneseLevel}
-                view={item.Members}
-                score={item.Score}
-                index={item.Anime_id}
-                className="film-card"
-              />
-            ))
-        }
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '60px', rotate: '270deg' }} onClick={handleNext} />
+  loading
+    ? Array.from(new Array(itemsPerPage)).map((_, index) => (
+      <Box sx={{ display: 'block' }} key={`skeleton-${index}`}>
+        <Skeleton 
+          variant="rectangular" 
+          width={180} 
+          height={255} 
+          sx={{ borderRadius: '8px', margin: '10px' }} 
+        />
+        <Skeleton 
+          variant="rectangular" 
+          width={180} 
+          height={30} 
+          sx={{ borderRadius: '8px', margin: '10px' }} 
+        />
+      </Box>
+    ))
+    : visibleMovies.map((item) => (
+      <FilmCard
+        key={item.Anime_id}
+        image={item["Image URL"]}
+        name={item.Name}
+        level={item.JapaneseLevel}
+        view={item.Members}
+        score={item.Score}
+        index={item.Anime_id}
+        className="film-card"
+      />
+    ))
+}
+
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '270deg' }} onClick={handleNext} />
       </Box>
     </Box>
   );
