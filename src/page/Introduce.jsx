@@ -85,7 +85,7 @@ export default function Introduce() {
       </div>
     </Box>
 
-    <Box sx= {{width: '100vw', height: 'auto', minHeight: '35vh', backgroundColor: '#F3F4F6', marginTop :'15vh', paddingBottom: '65px'}}>
+    <Box sx= {{width: '100vw', height: 'auto', minHeight: '35vh', backgroundColor: '#F3F4F6', marginTop :'15vh', paddingBottom: '65px', color: 'black'}}>
       <br></br>
          <div style={{textAlign: 'center', fontSize: '30px', fontWeight: '700', fontFamily: 'monospace'}}>TẦM NHÌN & SỨ MỆNH</div>
          <div style={{textAlign: 'center'}}>" Trở thành đơn vị tin cậy và hàng đầu Việt Nam cung cấp giải pháp công nghệ giáo dục "</div>

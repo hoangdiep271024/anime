@@ -9,7 +9,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import Skeleton from '@mui/material/Skeleton'
 
 
 export default function AccountHeader(props) {
@@ -52,7 +52,7 @@ const navigate = useNavigate()
     aria-expanded={open ? "true" : undefined}
     onClick={handleClick}>
         <img src= {props.image || defaultImage} style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '100%'}}></img>
-        <div style={{fontSize: '20px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{props.name}</div>
+        <div style={{fontSize: '20px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%'}}>{props.name}</div>
     </Box>
     <Menu
           id="demo-positioned-menu"
@@ -72,7 +72,7 @@ const navigate = useNavigate()
         >
           <MenuItem onClick={AccountClick}>Account</MenuItem>
           <MenuItem onClick={ClickProfile}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}><AlertDialog/></MenuItem>
+          <MenuItem><AlertDialog click={handleClose}/></MenuItem>
         </Menu>
 
         {isProfile && 
@@ -93,16 +93,21 @@ const navigate = useNavigate()
     </>
   )}
   
- function AlertDialog() {
+ function AlertDialog({click}) {
     const [open, setOpen] = React.useState(false);
-  
+    
     const handleClickOpen = () => {
       setOpen(true);
     };
   
-    const handleClose = () => {
+    const handleClosee = () => {
       setOpen(false);
+      click();
     };
+    const handleLogout = () => {
+      localStorage.removeItem('jwt');
+      window.location.reload()
+    }
   
     return (
       <React.Fragment>
@@ -111,21 +116,21 @@ const navigate = useNavigate()
         </Box>
         <Dialog
           open={open}
-          onClose={handleClose}
+          onClose={handleClosee}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Use Google's location service?"}
+            {"Are you sure to log out !"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-             Are you sure to log out !
+             Please confirm
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>YES</Button>
-            <Button onClick={handleClose} autoFocus>
+            <Button onClick={handleLogout}>YES</Button>
+            <Button onClick={handleClosee} autoFocus>
               NO
             </Button>
           </DialogActions>
