@@ -104,6 +104,7 @@ export default function Header() {
           gap: "5%",
           justifyContent: "center",
           alignItems: "center",
+          marginLeft: '17px'
         }}
       >
         <Box
