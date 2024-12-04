@@ -56,7 +56,7 @@ export default function NewFilm() {
         UPDATE LATEST MOVIE
       </div>
       <Box sx={{ display: 'flex',marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg' }} onClick={handlePrev} />
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg',display: { xs: 'none', lg: 'block'}}} onClick={handlePrev} />
         {
   loading
     ? Array.from(new Array(itemsPerPage)).map((_, index) => (
@@ -89,7 +89,7 @@ export default function NewFilm() {
     ))
 }
 
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '270deg' }} onClick={handleNext} />
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '270deg', display: { xs: 'none', lg: 'block'}}} onClick={handleNext} />
       </Box>
     </Box>
   );

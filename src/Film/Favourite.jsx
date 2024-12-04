@@ -55,8 +55,8 @@ export default function NewFilm() {
       <div style={{ fontSize: '25px', fontFamily: 'monospace', marginLeft: '5%', marginTop: '15px', marginBottom: '15px' }}>
         MOST FAVOURITE
       </div>
-      <Box sx={{ display: 'flex', marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '60px', rotate: '90deg' }} onClick={handlePrev} />
+      <Box sx={{ display: 'flex',marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg',display: { xs: 'none', lg: 'block'}}} onClick={handlePrev} />
         {
   loading
     ? Array.from(new Array(itemsPerPage)).map((_, index) => (
@@ -77,7 +77,7 @@ export default function NewFilm() {
     ))
     : visibleMovies.map((item) => (
       <FilmCard
-        key={item.Anime_id} 
+        key={item.Anime_id}
         image={item["Image URL"]}
         name={item.Name}
         level={item.JapaneseLevel}
@@ -89,7 +89,7 @@ export default function NewFilm() {
     ))
 }
 
-        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '60px', rotate: '270deg' }} onClick={handleNext} />
+        <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '270deg', display: {xs: 'none', lg: 'block'}}} onClick={handleNext} />
       </Box>
     </Box>
   );

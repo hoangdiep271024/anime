@@ -7,6 +7,7 @@ import FilmCard from '../Film/FilmCard'
 import NewFilm from '../Film/NewFilm'
 import Favourite from '../Film/Favourite'
 import { Box } from '@mui/material'
+import TvFilm from '../Film/TvFilm'
 export default function Home() {
   const [formData, setFormData] = useState({
     JapaneseLevel: 'N5',
@@ -45,6 +46,7 @@ export default function Home() {
     <Header/>
     <HomePicture/>
     <NewFilm/>
+    <Box sx ={{marginTop: '5%'}}> <TvFilm/></Box>
     <Box sx ={{marginTop: '5%'}}> <Favourite/></Box>
   
  

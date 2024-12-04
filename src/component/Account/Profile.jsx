@@ -97,6 +97,7 @@ export default function Profile() {
         phone__number: '',
         gmail: '',
         sex:'',
+        level: '',
         jwt: jwt,
       });
     useEffect(() => {
@@ -106,6 +107,7 @@ export default function Profile() {
             phone__number: userInfor.phone_number || '',
             gmail: userInfor.email || '',
             sex:userInfor.sex || '',
+            level: userInfor.level || '',
             jwt: jwt,
           });
         }
@@ -210,6 +212,16 @@ export default function Profile() {
     Nữ
   </label>
          </div>
+         <Box sx ={{gap: 1, display: 'flex', alignItems: 'center'}}>
+         <label style={{color: 'black'}}>Trình độ hiện tại: </label>
+            <select className="level" value={formData.level} disabled={!changeClick} name="level" onChange={handleChange} style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '10vw', fontSize: '17px', paddingLeft: '7px'}}>
+          <option value="N1">N1</option>
+          <option value="N2">N2</option>
+          <option value="N3">N3</option>
+          <option value="N4">N4</option>
+          <option value="N5">N5</option>
+          </select>
+          </Box>
          {!changeClick && <Button onClick={changeClickButton} style={{width: '100px'}}>Chỉnh sửa</Button>}
       </form>
       {changeClick && <SubmitButton onClick={submit}>Cập nhật</SubmitButton>}

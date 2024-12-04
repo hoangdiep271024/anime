@@ -46,6 +46,7 @@ export default function Header() {
         if(responseData.success){
           setIsLogin(true)
           setUserInfor(responseData.userInfo)
+          console.log(responseData)
         }
         else{
           setIsLogin(false)
@@ -104,7 +105,7 @@ export default function Header() {
           gap: "5%",
           justifyContent: "center",
           alignItems: "center",
-          marginLeft: '17px'
+          marginLeft: '15px'
         }}
       >
         <Box
@@ -261,7 +262,7 @@ export default function Header() {
           </Box>
         )}
       </div>
-      <Box sx={{ marginRight: "16px", marginLeft: "20px" , width: 'auto', maxWidth: '14%'}}>
+      <Box sx={{ marginRight: "16px", marginLeft: "20px" , width: 'auto', maxWidth: '17%'}}>
         
         {!isLogin && !loading && <PositionedMenu />}
         {isLogin && !loading && userInfor && <Box><AccountHeader name= {userInfor.full_name} image ={userInfor.user_img}></AccountHeader></Box>}
