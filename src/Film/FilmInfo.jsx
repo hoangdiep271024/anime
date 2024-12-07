@@ -11,8 +11,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArticleIcon from '@mui/icons-material/Article';
 import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 import { Button, Skeleton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+function createSlug(name) {
+  return name
+    .trim() 
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-'); }
 export default function FilmInfo() {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const [infoClick, setInfoClick] = useState(true)
+  const [watchClick, setWatchClick] = useState(false)
     const [data, setData] = useState()
     const [loading, setLoading] = useState(true)
       const fetchFilm = async () => {
@@ -46,6 +55,19 @@ export default function FilmInfo() {
         fetchData();
       }, []);
 
+      const ClickInfo = () => {
+        setInfoClick(true)
+        setWatchClick(false)
+      }
+      const ClickWatch = () => {
+        setInfoClick(false)
+        setWatchClick(true)
+      }
+      const episodeClick = (episode_id, name, episode) => {
+        localStorage.setItem('episode_id', episode_id)
+        localStorage.setItem('episode', episode)
+        navigate(`/film/${name}/${episode}`)
+      }
   return (
     <>
     {!loading && 
@@ -55,8 +77,8 @@ export default function FilmInfo() {
       <div style = {{fontSize: '27px', fontWeight: '800', fontFamily: 'Sour Gummy'}}>{data.anime.Name}</div>
       <div style={{display: 'flex', gap: '4px'}}>
   Genres: {data?.anime?.Genres?.map((item, index) => (
-    <Box sx ={{display: 'flex'}}>
-    <Link key={index} style={{textDecoration: 'none', cursor: 'pointer'}}>
+    <Box key={index} sx ={{display: 'flex'}}>
+    <Link style={{textDecoration: 'none', cursor: 'pointer'}}>
       {item}
     </Link>
      <div>{index < data.anime.Genres.length - 1 ? ', ' : ''}</div>
@@ -100,6 +122,34 @@ export default function FilmInfo() {
     </Box>}
 
     {loading && <Box sx ={{marginTop: '200px', marginLeft: '10%', width: '80vw', height: '40vh', borderRadius: '10px', overflow: 'hidden'}}><Skeleton variant='rectangular' width = '100%' height='100%'></Skeleton></Box>}
+    {!loading && <Box sx={{display: 'flex', justifyContent: 'start', marginLeft: '10%', marginTop: '20px'}}>
+      
+     {!infoClick &&<div onClick={ClickInfo} style={{width: '120px', height: '40px', paddingX: '10px', paddingY: '3px', backgroundColor: theme.palette.mode === 'dark' ? '#292929' : '#becee6' , alignContent: 'center', textAlign: 'center', cursor: 'pointer', borderRight: `1px solid ${theme.palette.mode === 'dark' ? '#fafafa' : 'black'}`}}>Information</div>}
+     
+     {infoClick &&<div onClick={ClickInfo} style={{width: '120px', height: '40px', paddingX: '10px', paddingY: '3px', backgroundColor: '#d65424' , alignContent: 'center', textAlign: 'center', cursor: 'pointer', borderRight: `1px solid ${theme.palette.mode === 'dark' ? '#fafafa' : 'black'}`, color: 'white'}}>Information</div>}
+     {!watchClick && <div onClick={ClickWatch} style={{width: '120px', height: '40px', paddingX: '10px', paddingY: '3px', backgroundColor: theme.palette.mode === 'dark' ? '#292929' : '#becee6' , alignContent: 'center', textAlign: 'center', cursor: 'pointer'}}>Watch</div>}
+     {watchClick && <div onClick={ClickWatch} style={{width: '120px', height: '40px', paddingX: '10px', paddingY: '3px', backgroundColor:'#d65424' , alignContent: 'center', textAlign: 'center', cursor: 'pointer', color: 'white'}}>Watch</div>}
+      </Box>}
+
+      {!loading && infoClick && <Box sx ={{width: '80%', marginLeft: '10%', marginTop: '20px'}}>
+        <p>{`Aired: ${data.anime.Aired}`}</p>
+        <p>{`Status: ${data.anime.Status}`}</p>
+        <p>{`Producers: ${data.anime.Producers}`}</p>
+        <p>{`Synopsis: ${data.anime.Synopsis}`}</p>
+        </Box>}
+
+      {!loading && watchClick && <Box sx ={{width: '80%', marginLeft: '10%', marginTop: '20px'}}>
+        <div style={{fontSize: '18px', fontWeight: '800'}}>List of episodes:</div>
+        <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '15px'}}>
+        {data.episodes.map((item, index) => {
+          return (
+          <div key ={index} onClick={() => episodeClick(item.Episode_id, encodeURIComponent(createSlug(data.anime.Name)),item.Episode )} style={{backgroundColor: theme.palette.mode === 'dark' ? '#2a2b2b' : '#d9dbdb', padding: '3px 12px 3px 12px', cursor: 'pointer'}}>{`${item.Episode}`}</div>)
+        })}
+</Box>
+        
+        </Box>}
+
+
     </>
   )
 }

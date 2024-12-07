@@ -33,10 +33,9 @@ const [okMessage, setOkMessage]= useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('Thông tin form:', formData)
-    
+
     if (formData.password !== formData.rePassword) {
-      alert('Mật khẩu không khớp');
+      alert('Passwords do not match');
       return;
     }
 
@@ -48,30 +47,27 @@ const [okMessage, setOkMessage]= useState('')
         },
         body: JSON.stringify(formData)
       });
-      
+
       if (response.ok) {
-        // Xử lý thành công
         const data = await response.json();
 
-        // Kiểm tra success
         if (data.success) {
-          console.log('Đăng ký thành công:', data.message);
-          setOkMessage(`Đăng ký thành công: ${data.message}`)
+          console.log('Sign up successful:', data.message);
+          setOkMessage(`Sign up successful: ${data.message}`);
           setTimeout(() => {
             navigate('/home');
           }, 2500);
         } else {
-          const error__alert =`Đăng ký thất bại:, ${data.message}`;
+          const error__alert = `Sign up failed: ${data.message}`;
           console.log(error__alert);
-          setErrorMessage(`Đăng ký thất bại: ${data.message}`)
-          // <Alert severity="error" style={{top:'0', left: '0', zIndex: '20', width:'25vh', height:'30px'}}>{error__alert}</Alert>
+          setErrorMessage(`Sign up failed: ${data.message}`);
         }
       } else {
-        setErrorMessage(`Đăng ký thất bại: ${response.statusText}`)
-        console.error('Lỗi khi đăng ký:', response.statusText);
+        setErrorMessage(`Sign up failed: ${response.statusText}`);
+        console.error('Error during sign up:', response.statusText);
       }
     } catch (error) {
-      setErrorMessage(`Lỗi mạng: ${error}`)
+      setErrorMessage(`Network error: ${error}`);
     }
   };
 
@@ -119,7 +115,7 @@ const [okMessage, setOkMessage]= useState('')
           Animetango
         </Typography>
       </Link>
-      <p style={{fontSize: '30px', color: '#fa7a66', fontWeight: '800'}}>Đăng ký</p>
+      <p style={{fontSize: '30px', color: '#fa7a66', fontWeight: '800'}}>Sign up</p>
     </Box>
     <Box sx={{position: 'relative', width: '100vw', height: '88vh'}}>
         <img src='/backgroundsignup.jpg' style={{width: '100vw', height: '88vh', objectFit: 'cover'}}></img>
@@ -146,16 +142,16 @@ const [okMessage, setOkMessage]= useState('')
           </Alert>
         )}
    <Box sx={{position: 'absolute', zIndex: '2', top: '0'}} className='form'>
-   <Typography sx={{fontWeight:"800", color: "#0209d6" , fontSize: '30px',textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)", textAlign: 'center',marginTop: '75px'}}>Đăng ký tài khoản</Typography>
+   <Typography sx={{fontWeight:"800", color: "#0209d6" , fontSize: '30px',textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)", textAlign: 'center',marginTop: '75px'}}>Sign up for an account</Typography>
    <form onSubmit={handleSubmit}>
         <div style={{display: 'flex', width: '100vw', justifyContent: 'center', gap: '10vw', marginTop: '20px'}}>
          <div>
-            <label>Họ và tên</label>
+            <label>Fullname</label>
             <br></br>
             <input className="name"  name="name" onChange={handleChange} placeholder='Họ và tên' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div>
-            <label>Tên đăng nhập</label>
+            <label>Username</label>
             <br></br>
             <input className="user__name"  name="user__name" onChange={handleChange} placeholder='Tên đăng nhập' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
@@ -163,7 +159,7 @@ const [okMessage, setOkMessage]= useState('')
         </div>
         <div  style={{display: 'flex', width: '100vw', justifyContent: 'center', gap: '10vw',marginTop: '30px'}}>
          <div>
-            <label>Số điện thoại</label>
+            <label>Phone number</label>
             <br></br>
             <input name="phone__number" className="phone__number" onChange={handleChange} placeholder='Số điện thoại' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
@@ -175,12 +171,12 @@ const [okMessage, setOkMessage]= useState('')
           </div>
          <div style={{display: 'flex', width: '100vw', justifyContent: 'center', gap: '10vw',marginTop: '30px'}}>
          <div>
-            <label>Ngày sinh</label>
+            <label>Date of birth</label>
             <br></br>
             <input placeholder='Ngày sinh' type='date' className="birthday" onChange={handleChange}  name="birthday" style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div style={{width: '24vw'}}>
-            <label>Giới tính</label>
+            <label>Gender</label>
             <br></br>
           <select className='sex' onChange={handleChange} name="sex" style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '10vw', fontSize: '17px', paddingLeft: '7px'}}>
           <option value="" selected hidden></option>
@@ -193,12 +189,12 @@ const [okMessage, setOkMessage]= useState('')
 
         <div style={{display: 'flex', width: '100vw', justifyContent: 'center', gap: '10vw',marginTop: '30px'}}>
          <div>
-            <label>Mật khẩu</label>
+            <label>Password</label>
             <br></br>
             <input className="Password" onChange={handleChange}  name="password" placeholder='Mật khẩu' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div>
-            <label>Nhập lại mật khẩu</label>
+            <label>Repassword</label>
             <br></br>
             <input className="rePassword" onChange={handleChange} name="rePassword" placeholder='Nhập lại mật khẩu' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
@@ -206,7 +202,7 @@ const [okMessage, setOkMessage]= useState('')
         </div>
         <div style={{display: 'flex', width: '100vw', justifyContent: 'center', gap: '10vw',marginTop: '30px', alignItems: 'end' }}>
          <div style={{width: '24vw'}}>
-            <label>Trình độ hiện tại</label>
+            <label>Level</label>
             <br></br>
             <select className="level" name="level" onChange={handleChange} style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '10vw', fontSize: '17px', paddingLeft: '7px'}}>
           <option value="" selected hidden></option>
@@ -218,7 +214,7 @@ const [okMessage, setOkMessage]= useState('')
           </select>
          </div>
          <div style={{width: '24vw', display: 'flex', justifyContent: 'start'}}>
-           <Button sx={{width: '10vw', color: 'white', backgroundColor: 'black', marginLeft: '5px', borderRadius: '10px', border: '2px solid #000'}} className='button' type="submit">Đăng ký</Button>
+           <Button sx={{width: '10vw', color: 'white', backgroundColor: 'black', marginLeft: '5px', borderRadius: '10px', border: '2px solid #000'}} className='button' type="submit">Sign up</Button>
          </div>
 
         </div>

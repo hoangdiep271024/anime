@@ -19,6 +19,7 @@ import Login from "../Account/Login";
 import { useNavigate } from "react-router-dom";
 import AccountHeader from "../Account/AccountHeader";
 import { Skeleton } from "@mui/material";
+import ForgetPassword from "../Account/ForgetPassword";
 
 export default function Header() {
   const theme = useTheme();
@@ -33,6 +34,7 @@ export default function Header() {
   const [userInfor, setUserInfor] = useState([]);
   const [loading, setLoading] = useState(true)
   const jwt = localStorage.getItem('jwt')
+  
   useEffect(() => {
     fetch('https://animetangobackend.onrender.com/api/userInfo', {
       method: 'POST',
@@ -272,10 +274,12 @@ export default function Header() {
           sx={{ borderRadius: '8px', margin: '10px' }} ></Skeleton>}
       </Box>
       <ChangeMode />
+
     </Box>
   );
 }
 function PositionedMenu() {
+  const [forget, setForget] = useState(false)
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -294,7 +298,13 @@ function PositionedMenu() {
     setAnchorEl(null);
     navigate('/signup')
   }
-
+  const ClickForget = () => {
+    setLoginClick(!loginClick)
+    setForget(!forget)
+  }
+  const ClickForgett = () => {
+    setForget(!forget)
+  }
   return (
     <div>
       <Box
@@ -338,9 +348,10 @@ function PositionedMenu() {
                   zIndex: 11,
                 }}
                 onClick={ClickLogin} />{" "}
-              <Box sx={{position: 'absolute', zIndex: '20', top: '30vh', left: '35vw'}}><Login CloseIconn={ClickLogin}></Login></Box>  
+              <Box sx={{position: 'absolute', zIndex: '20', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
               
             </>}
+            {forget && <ForgetPassword CloseClick={ClickForgett}/>}
     </div>
   );
 }

@@ -44,7 +44,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
   }
   
   const handleSubmit = async (e) => {
-     e.preventDefault();
+    e.preventDefault();
     try {
       const response = await fetch('https://animetangobackend.onrender.com/api/login', {
         method: 'POST',
@@ -57,23 +57,22 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
-          setOkMessage(`Đăng nhập thành công: ${data.message}`) 
-          localStorage.setItem('jwt', data.jwt)
+          setOkMessage(`Login successful: ${data.message}`);
+          localStorage.setItem('jwt', data.jwt);
           setTimeout(() => {
             window.location.reload();
           }, 1500);
-          
         } else {
-          const error__alert =`Đăng nhập thất bại: ${data.message}`;
+          const error__alert = `Login failed: ${data.message}`;
           console.log(error__alert);
-          setErrorMessage(`Đăng nhập thất bại: ${data.message}`)
+          setErrorMessage(`Login failed: ${data.message}`);
         }
       } else {
-        // Xử lý lỗi
-        console.error('Lỗi khi đăng nhập:', response.statusText);
+        // Handle error
+        console.error('Error during login:', response.statusText);
       }
     } catch (error) {
-      console.error('Lỗi mạng:', error);
+      console.error('Network error:', error);
     }
   };
   useEffect(() => {
@@ -99,17 +98,18 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
     <Box
       sx={{
         position: "absolute",
-        zIndex: "10",
-        width: "30vw",
-        height: "40vh",
+        zIndex: "10000",
+        width: "25vw",
+        height: "100vh",
         backgroundColor: "#fff",
         transition: 'linear',
         paddingTop:'30px', 
-        borderRadius: '10px'
+        top: '0', 
+        left: '0'
       }}
       autoComplete="off"
     >
-        <CloseIcon style={{position: 'absolute', top: '12px', right: '15px', cursor: 'pointer'}} onClick={CloseIconn}/>
+        <CloseIcon style={{position: 'absolute', top: '12px', right: '15px', cursor: 'pointer', color: 'black'}} onClick={CloseIconn}/>
        {errorMessage && (
           <Alert variant='filled' severity="error" style={{transition: '-moz-initial', width: '100%', position: 'absolute', zIndex:'20', top: '0', left:'0'}}>
             {errorMessage}
@@ -124,7 +124,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
       <form  
       onSubmit={handleSubmit}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-    <label className="user__name__label" style={{ color: '#000', marginLeft: '10%'}}>Tài khoản</label>
+    <label className="user__name__label" style={{ color: '#000', marginLeft: '10%'}}>Account</label>
     <input
       onChange={handleChange}
       className="user__name"
@@ -146,8 +146,8 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
     />
     <br/>
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '80%', marginLeft: '10%' }}>
-      <label className="password__label" style={{ color: '#000' }}>Mật khẩu</label>
-      <div onClick={onSetForgotPassword} style={{ fontSize: '13px', color: 'grey', cursor: 'pointer', fontWeight: '500' }}>Quên mật khẩu?</div>
+      <label className="password__label" style={{ color: '#000' }}>Password</label>
+      <div onClick={onSetForgotPassword} style={{ fontSize: '13px', color: 'grey', cursor: 'pointer', fontWeight: '500' }}>Forgot password ?</div>
     </div>
     
     <input
@@ -174,8 +174,8 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
   </div>
 </form>
       <div style={{display: 'flex', fontSize:'13px', width: '100%', justifyContent: 'center'}}>
-        <p style={{color:'grey'}}>Chưa có tài khoản?</p>
-        <p style={{color:'#207ee3', cursor:'pointer', marginLeft:'3px' }} onClick={Signup} >Đăng kí ngay!</p>
+        <p style={{color:'grey'}}>Don't have an account yet?</p>
+        <p style={{color:'#207ee3', cursor:'pointer', marginLeft:'3px' }} onClick={Signup} >Sign up now!</p>
       </div>
     </Box>
   );
