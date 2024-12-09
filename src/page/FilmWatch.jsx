@@ -129,7 +129,7 @@ function createSlug(name) {
     src={item.Url_link}
     style={{
       position: 'absolute', 
-      top: '-50px',
+      top: '-55px',
       left: '0',
       width: '1200px',
       height: '700px', 
