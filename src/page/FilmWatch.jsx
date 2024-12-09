@@ -122,7 +122,7 @@ function createSlug(name) {
     </Box>
     {data.episodes.map((item, index) => {
       return item.Episode_id == localStorage.getItem('episode_id') && (
-        <div style={{ overflow: 'hidden', width: '1250px', height: '530px', position: 'relative', marginTop: '20px', marginLeft: `calc((100vw - 1250px) / 2)`}}>
+        <div style={{ overflow: 'hidden', width: '1250px', height: '830px', position: 'relative', marginTop: '20px', marginLeft: `calc((100vw - 1250px) / 2)`}}>
   <iframe
     allowFullScreen
     key={index}
