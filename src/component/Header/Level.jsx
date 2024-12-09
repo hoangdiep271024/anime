@@ -32,7 +32,7 @@ export default function Level() {
                 marginLeft: '-50px',
                 borderRadius: '5px',
                 border: `1.5px solid ${theme.palette.mode === 'dark' ? 'white' : 'grey'}`,
-                fontSize: '18px'
+                fontSize: '15px'
             }}
         >
             {links.map((link, index) => (

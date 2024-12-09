@@ -21,7 +21,7 @@ export default function FilmCard(props) {
       navigate(`/film/${encodeURIComponent(createSlug(props.name))}`)
     }
   return (
-   <Box sx = {{width: '180px', height: '340px', minHeight: '250px', borderRadius: '7px',cursor: 'pointer', overflow: 'hidden', transition: 'transform 0.5s linear'}} onClick ={clickFilm}>
+   <Box sx = {{width: '160px', height: '300px', minHeight: '250px', borderRadius: '7px',cursor: 'pointer', overflow: 'hidden', transition: 'transform 0.5s linear'}} onClick ={clickFilm}>
     <div className='filmImagediv' style={{width: '100%', height: '75%', position: 'relative', zIndex: '1', alignItems: 'center', display: 'flex', justifyContent:'center',  overflow: 'hidden'}}> 
     <div style={{ width: '35%', height: '10%', backgroundColor: '#374051', position: 'absolute', top: '2%', left: '5%', borderRadius: '10px', display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'center', zIndex: '5'}}>
     <StarIcon style={{color: '#ebb609', fontSize: '16px'}}/>
@@ -38,8 +38,8 @@ export default function FilmCard(props) {
 
     
     </div>
-    <div style={{display: 'flex', justifyContent: 'space-between'}}> 
-      <Box sx={{display: 'flex', gap: '5px'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '15px'}}> 
+      <Box sx={{display: 'flex', gap: '3px'}}>
       <VisibilityIcon/>
       <div>{props.view}</div>
       </Box>

@@ -11,7 +11,7 @@ export default function ChangeMode() {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ m: 1, minWidth: 100, fontSize: '15px', marginLeft: '-5px' }} size="small">
       <InputLabel id="select_mode_label">Mode</InputLabel>
       <Select
         labelId="select_mode_label"

@@ -59,9 +59,9 @@ export default function TvFilm() {
     <Box sx={{display: 'flex', width: '92%', marginLeft: '5%', gap: '3%', height: '400px'}}>
         {!loading &&
         <>
-        <div style={{width: '45%', height: '100%', position: 'relative', overflow: 'hidden', borderRadius: '10px', zIndex: '1', alignItems: 'center', display: 'flex', justifyContent:'center'}} className='filmImagediv' onClick={() => ClickFilm(data[19].Anime_id, data[19].Name)}>
-            <img className='filmImage' src={data[19]["Image URL"]} style={{width: '100%', height: '100%', borderRadius: '10px', transition: 'transform 0.3s ease', cursor: 'pointer', zIndex: '2'}}></img>
-            <div style={{position: 'absolute',fontWeight: '800', bottom: '10px', fontSize: '20px', fontFamily: 'monospace', textDecoration: 'underline', left: '15px', color: 'white', zIndex: '3'}}>{data[19].Name}</div>
+        <div style={{width: '45%', height: '100%', position: 'relative', overflow: 'hidden', borderRadius: '10px', zIndex: '1', alignItems: 'center', display: 'flex', justifyContent:'center'}} className='filmImagediv' onClick={() => ClickFilm(data[6].Anime_id, data[6].Name)}>
+            <img className='filmImage' src={data[6]["Image URL"]} style={{width: '100%', height: '100%', borderRadius: '10px', transition: 'transform 0.3s ease', cursor: 'pointer', zIndex: '2'}}></img>
+            <div style={{position: 'absolute',fontWeight: '800', bottom: '10px', fontSize: '20px', fontFamily: 'monospace', textDecoration: 'underline', left: '15px', color: 'white', zIndex: '3'}}>{data[6].Name}</div>
             <PlayCircleIcon className='icon' style={{position: 'absolute', zIndex: '7', color: '#ef4444', fontSize: '55px',transition: 'opacity 0.3s ease'}}/>
         </div>    
         <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', width: '50%', alignContent: 'space-between', height: '100%', overflow: 'hidden'}}>

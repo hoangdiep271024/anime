@@ -119,7 +119,7 @@ export default function Header() {
             style={{
               textDecoration: "none",
               color: theme.palette.mode === "light" ? "black" : "white",
-              fontSize: "18px",
+              fontSize: "16px",
               display: "flex",
               alignItems: "center",
               cursor: "pointer",
@@ -141,7 +141,7 @@ export default function Header() {
             style={{
               textDecoration: "none",
               color: theme.palette.mode === "light" ? "black" : "white",
-              fontSize: "18px",
+              fontSize: "16px",
               display: "flex",
               alignItems: "center",
               cursor: "pointer",
@@ -162,7 +162,7 @@ export default function Header() {
             style={{
               textDecoration: "none",
               color: theme.palette.mode === "light" ? "black" : "white",
-              fontSize: "18px",
+              fontSize: "16px",
               display: "flex",
               alignItems: "center",
               cursor: "pointer",
@@ -178,7 +178,7 @@ export default function Header() {
           style={{
             textDecoration: "none",
             color: theme.palette.mode === "light" ? "black" : "white",
-            fontSize: "18px",
+            fontSize: "16px",
             display: "flex",
             alignItems: "center",
             cursor: "pointer",
@@ -313,7 +313,7 @@ function PositionedMenu() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{ fontSize: "18px", cursor: "pointer" }}
+        sx={{ fontSize: "16px", cursor: "pointer" }}
       >
         Account?
       </Box>

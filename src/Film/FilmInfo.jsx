@@ -71,7 +71,7 @@ export default function FilmInfo() {
   return (
     <>
     {!loading && 
-    <Box sx={{ marginLeft: '10%',width: '80%', height: 'auto', minHeight: '40vh', marginTop: '200px', backgroundColor: theme.palette.mode == 'dark' ? '#333332' : '#fafafa', borderRadius: '12px', display: 'flex', alignItems: 'center', paddingLeft: '7%', gap: '5%', fontSize: '18px'}}>
+    <Box sx={{ marginLeft: '10%',width: '80%', height: 'auto', minHeight: '40vh', marginTop: '200px', backgroundColor: theme.palette.mode == 'dark' ? '#333332' : '#fafafa', borderRadius: '12px', display: 'flex', alignItems: 'center', paddingLeft: '7%', gap: '5%', fontSize: '15px'}}>
     <img className='infoImg' src = {data.anime['Image URL']} style={{ cursor: 'pointer', width: '16%', height: 'auto', maxHeight: '35vh', minHeight: '30vh'}}></img>
     <div>
       <div style = {{fontSize: '27px', fontWeight: '800', fontFamily: 'Sour Gummy'}}>{data.anime.Name}</div>
@@ -85,7 +85,7 @@ export default function FilmInfo() {
      </Box>
   ))}
 </div>
-<div style={{display: 'flex', alignContent: 'center', gap: '5px', fontSize: '18px'}}>
+<div style={{display: 'flex', alignContent: 'center', gap: '5px', fontSize: '15px'}}>
   <div>Score: </div>
 <Rating name="customized-10" defaultValue={data.anime.Score} precision={0.25} max={10} readOnly/>
 <div>{`( ${data.anime.Score} )` }</div>

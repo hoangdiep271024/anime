@@ -63,14 +63,14 @@ export default function NewFilm() {
       <Box sx={{ display: 'block' }} key={`skeleton-${index}`}>
         <Skeleton 
           variant="rectangular" 
-          width={180} 
-          height={255} 
+          width={160} 
+          height={245} 
           sx={{ borderRadius: '8px', margin: '10px' }} 
         />
         <Skeleton 
           variant="rectangular" 
           width={180} 
-          height={30} 
+          height={20} 
           sx={{ borderRadius: '8px', margin: '10px' }} 
         />
       </Box>

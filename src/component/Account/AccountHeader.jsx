@@ -52,7 +52,7 @@ const navigate = useNavigate()
     aria-expanded={open ? "true" : undefined}
     onClick={handleClick}>
         <img src= {props.image || defaultImage} style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '100%'}}></img>
-        <div style={{fontSize: '20px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%'}}>{props.name}</div>
+        <div style={{fontSize: '17px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '150px'}}>{props.name}</div>
     </Box>
     <Menu
           id="demo-positioned-menu"
