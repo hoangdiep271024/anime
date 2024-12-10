@@ -371,7 +371,7 @@ function PositionedMenu() {
                   width: "100%",
                   height: "100%",
                   backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  zIndex: 11,
+                  zIndex: 11000000000,
                 }}
                 onClick={ClickLogin} />{" "}
               <Box sx={{position: 'absolute', zIndex: '20', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
