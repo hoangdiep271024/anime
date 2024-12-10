@@ -20,9 +20,12 @@ import { useNavigate } from "react-router-dom";
 import AccountHeader from "../Account/AccountHeader";
 import { Skeleton } from "@mui/material";
 import ForgetPassword from "../Account/ForgetPassword";
+import ChatBot from "../chatBot/ChatBot"
+import ChatBotToggle from "../chatBot/ChatBotToggle"
 
 export default function Header() {
   const theme = useTheme();
+  const navigate = useNavigate()
   const [searchClick, setSearchClick] = useState(false);
   const ClickSearch = () => {
     setSearchClick(!searchClick);
@@ -34,7 +37,7 @@ export default function Header() {
   const [userInfor, setUserInfor] = useState([]);
   const [loading, setLoading] = useState(true)
   const jwt = localStorage.getItem('jwt')
-  
+  const [query, setQuery] =useState()
   useEffect(() => {
     fetch('https://animetangobackend.onrender.com/api/userInfo', {
       method: 'POST',
@@ -48,7 +51,6 @@ export default function Header() {
         if(responseData.success){
           setIsLogin(true)
           setUserInfor(responseData.userInfo)
-          console.log(responseData)
         }
         else{
           setIsLogin(false)
@@ -58,6 +60,19 @@ export default function Header() {
       })
       .catch(error => console.error('Error:', error));
   }, []);
+  const [isOpen, setIsOpen] = useState(false); 
+  const toggleChatClick = () => {
+    setIsOpen(!isOpen); 
+  };
+
+  const searchh = (query) => {
+    localStorage.setItem('query', query)
+    navigate(`/search/${query}`)
+    window.location.reload()
+  }
+  const searchChange = (e) => {
+    setQuery(e.target.value); // Cập nhật giá trị comment khi textarea thay đổi
+};
 
   return (
     <Box
@@ -231,16 +246,20 @@ export default function Header() {
             }}
           >
             <SearchIcon
+            onClick= {() => searchh(query)}
               style={{
                 position: "absolute",
                 top: "7px",
                 left: "5px",
                 color: "black",
+                cursor: 'pointer'
               }}
             />
             <input
               type="text"
               placeholder="Search....."
+              onChange={searchChange}
+              value={query}
               style={{
                 width: "100%",
                 outline: "none",
@@ -274,6 +293,13 @@ export default function Header() {
           sx={{ borderRadius: '8px', margin: '10px' }} ></Skeleton>}
       </Box>
       <ChangeMode />
+      {!isOpen && <Box sx={{position:'fixed', right: '3vw', top: '90vh', zIndex: '10000'}}>
+        <ChatBotToggle toggleChat={toggleChatClick} ></ChatBotToggle>
+        </Box>}
+        {isOpen && <Box sx={{position:'fixed', right: '3vw',top:'50vh', width: '23vw', height: '35vh', zIndex: '10000'}}>
+          
+          <ChatBot closeClick={toggleChatClick}></ChatBot>
+          </Box>}
 
     </Box>
   );

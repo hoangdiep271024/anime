@@ -3,6 +3,7 @@ import FilmCard from './FilmCard';
 import { Box } from '@mui/material';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import Skeleton from '@mui/material/Skeleton';
+import { Link } from 'react-router-dom';
 
 export default function NewFilm() {
   const [startIndex, setStartIndex] = useState(0);
@@ -52,8 +53,9 @@ export default function NewFilm() {
 
   return (
     <Box>
-      <div style={{ fontSize: '25px', fontFamily: 'monospace', marginLeft: '5%', marginTop: '15px', marginBottom: '15px' }}>
-        MOST FAVOURITE
+      <div style={{marginLeft: '5%', width: '82%', marginTop: '15px', marginBottom: '15px', justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
+       <div style ={{fontSize: '25px', fontFamily: 'monospace'}}>MOST FAVORITE MOVIES</div> 
+        <Link to ='/most_favorite' style={{textDecoration: 'none', marginTop: '15px'}}>See more....</Link>
       </div>
       <Box sx={{ display: 'flex',marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
         <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg',display: { xs: 'none', lg: 'block'}}} onClick={handlePrev} />

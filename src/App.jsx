@@ -9,6 +9,12 @@ import AccountShow from "./page/AccountShow";
 import FilmDetail from "./page/FilmDetail";
 import FilmWatch from "./page/FilmWatch";
 import Category from "./page/Category";
+import Genre from "./page/Genre";
+import FilmNew from "./page/FilmNew";
+import FilmMostFavorite from "./page/FilmMostFavorite";
+import Bayes from "./page/Bayes";
+import Decision from "./page/Decision";
+import Search from "./page/Search";
 function App() {
   return (
     <Router>
@@ -23,6 +29,12 @@ function App() {
         <Route path="/film/:film_name" element= {<FilmDetail/>}/>
         <Route path="/film/:film_name/:episode" element= {<FilmWatch/>}/>
         <Route path="/Category/:category" element= {<Category/>}/>
+        <Route path="/genre/:genre" element= {<Genre/>}/>
+        <Route path="/new_film" element= {<FilmNew/>}/>
+        <Route path="/most_favorite" element= {<FilmMostFavorite/>}/>
+        <Route path="/recommend_naiveBayes" element= {<Bayes/>}/>
+        <Route path="/recommend_decisionTree" element= {<Decision/>}/>
+        <Route path="/search/:query" element= {<Search/>}/>
       </Routes>
     </Router>);
 

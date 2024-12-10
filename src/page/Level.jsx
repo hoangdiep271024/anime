@@ -5,12 +5,12 @@ import { useTheme } from '@emotion/react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useEffect } from 'react';
 import FilmCard from '../Film/FilmCard';
+import FilmPage from '../Film/FilmPage';
 export default function Level() {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
     const theme = useTheme();
     const level = localStorage.getItem('level')
-    const countFilm = localStorage.getItem('countFilm')
     const fetchFilm = async () => {
       try {
         const response = await fetch('https://animetangobackend.onrender.com/api/anime/search', {
@@ -18,7 +18,7 @@ export default function Level() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({JapaneseLevel : level}),
+          body: JSON.stringify({JapaneseLevel : level, n: '150'}),
         });
   
         if (response.ok) {
@@ -51,18 +51,9 @@ export default function Level() {
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
-    <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '90%', marginLeft: '5%', marginTop: '25px'}}>
-       {!loading && data.map((item)=> {
-       return (
-       <FilmCard  key={item.Anime_id}
-        image={item["Image URL"]}
-        name={item.Name}
-        level={item.JapaneseLevel}
-        view={item.Members}
-        score={item.Score}
-        index={item.Anime_id}
-        className="film-card"></FilmCard>)})}
-     </Box>
+    {!loading && <Box>
+      <FilmPage data ={data}></FilmPage>
+      </Box>}
     </Box>
   )
 }

@@ -6,7 +6,6 @@ const FilmListStyled = styled.div`
   flex-wrap: wrap;
   gap:10px;
   padding-left: 10%;
-  padding-right: 10%;
 `;
 export default function FilmList(props) {
   return (

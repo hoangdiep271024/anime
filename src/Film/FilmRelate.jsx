@@ -1,7 +1,8 @@
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import FilmCard from './FilmCard';
+// import Skeleton from '@mui/material/Skeleton';
 export default function FilmRelate() {
   const [data , setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -17,7 +18,7 @@ export default function FilmRelate() {
     
           if (response.ok) {
             const data = await response.json();
-            console.log(data)
+
             setData(data)
             setLoading(false)
     
@@ -39,7 +40,7 @@ export default function FilmRelate() {
     <>
     {!loading && <Box>
       <Box sx= {{marginLeft: '10%', fontSize: '25px', marginTop: '30px'}}>LIST FILM RELATE</Box>
-      <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '90%', marginLeft: '10%', marginTop: '25px', }}>
+      <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '80%', marginLeft: '10%', marginTop: '25px', }}>
        {!loading && data.map((item)=> {
        return (
        <FilmCard  key={item.Anime_id}
@@ -52,6 +53,16 @@ export default function FilmRelate() {
         className="film-card"></FilmCard>)})}
      </Box>
       
+      </Box>}
+{loading &&  <Box sx= {{marginLeft: '10%', fontSize: '25px', marginTop: '30px'}}>LIST FILM RELATE</Box>}
+    {loading  &&  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px', width: '80%', marginLeft: '10%', marginTop: '25px' }}>
+        {[...Array(10)].map((_, index) => (
+          <Box key={index} sx={{ width: '200px', height: '300px' }}>
+            <Skeleton variant="rectangular" width="100%" height="60%" />
+            <Skeleton width="80%" />
+            <Skeleton width="40%" />
+          </Box>
+        ))}
       </Box>}
     </>
   )

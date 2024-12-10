@@ -42,7 +42,7 @@ export default function Profile() {
     };
     const handleSubmitt = async (e) => {
       if (!file) {
-        alert('Hãy chọn một ảnh trước khi upload!');
+        alert('Please select an image before uploading!');
         return;
       }
       
@@ -58,15 +58,15 @@ export default function Profile() {
         });
       
         if (response.data.success) {
-          setUploadStatus('Tải lên thành công!');
+          setUploadStatus('Upload successful!');
           console.log('URL ảnh:', response.data.message.url);
 
         } else {
-          setUploadStatus('Tải lên thất bại!');
+          setUploadStatus('Upload failed!');
         }
       } catch (error) {
-        console.error('Lỗi tải lên:', error);
-        setUploadStatus(`Tải lên thất bại! ${error}`);
+        console.error('Upload error:', error);
+        setUploadStatus(`Upload failed! ${error}`);
       }
       console.log(uploadStatus)
     };
@@ -133,18 +133,18 @@ export default function Profile() {
             const data = await response.json();
             if (data.success) {
               setTimeout(() => {
-                console.log('gui form 2 thanh cong')
                 window.location.reload();
               }, 1500);
+              console.log('ok')
             } else {
-              const error__alert = `Thay đổi thông tin thất bại: ${data.message}`;
+              const error__alert = `Failed to update information: ${data.message}`;
               console.log(error__alert);
             }
           } else {
-            console.error('Lỗi khi thay đổi thông tin:', response.statusText);
+            console.error('Error while updating information:', response.statusText);
           }
         } catch (error) {
-          console.error('Lỗi mạng:', error);
+          console.error('Network error:', error);
         }
       };
         const changeClickButton = () => {
@@ -161,71 +161,162 @@ export default function Profile() {
         };
 
     
-  return (
-    <div>
-        {login && (<Box
-      sx={{
-        position: "absolute",
-        zIndex: "10",
-        top: "0",
-        right: "0",
-        width: "25vw",
-        height: "100vh",
-        backgroundColor: "#fff",
-        transition: 'linear',
-
-        paddingTop:'30px'
-      }}
-      autoComplete="off"
-    >
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-  <img src={preview || image} style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '100%', border: '2px solid #9ea4ad' }} />
-</div>
-
-      {changeClick && (<form onSubmit={handleSubmitt} style={{ marginLeft: '38%', marginTop: '10px'}}>
-        <input type="file" name='user__img' accept="image/*" 
-      onChange={handleFileChange}></input>
-      </form>)
-        }
-      <form onSubmit={handleSubmit} style={{marginLeft: '25px', width: '85%'}}>
-        <br/>
-       <label className="name__label" style={{color:'#000'}}>Họ và tên</label>
-        <br/>
-        <input className="name" value={formData.name} disabled={!changeClick}  name="name" type="text" onChange={handleChange} required style={{outline:'none', borderRadius: '5px', border:'1px solid #b8b2b2', height:'35px', width:'100%', fontSize:'17px', paddingLeft:'5px', marginTop:'10px', marginBottom: '10px'}}></input>
-         <br/>
-         <label className="gmail__label" style={{color:'#000'}}>E-mail</label>
-        <br/>
-        <input className="gmail" disabled={!changeClick} value={formData.gmail} name="gmail" onChange={handleChange} type="text" required style={{outline:'none', borderRadius: '5px', border:'1px solid #b8b2b2', height:'35px', width:'100%', fontSize:'17px', paddingLeft:'5px', marginTop:'10px', marginBottom: '10px'}}></input>
-         <br/>
-         <label className="phone__label" style={{color:'#000'}}>Số điện thoại</label>
-        <br/>
-        <input className="phone__number" disabled={!changeClick}  value={formData.phone__number} onChange={handleChange}  name="phone__number" type="text" required style={{outline:'none', borderRadius: '5px', border:'1px solid #b8b2b2', height:'35px', width:'100%', fontSize:'17px', paddingLeft:'5px', marginTop:'10px', marginBottom: '10px'}}></input>
-         <br/>
-         <div style={{display: 'flex', alignItems:'center',gap:'8px'}}>
-          <p style={{color:'black'}}>Giới tính:</p>
-         <label style={{color: 'black'}}>
-    <input className='sex' onChange={handleChange} disabled={!changeClick} type="radio" name="sex" value="1" checked={formData.sex == '1'}/>
-    Nam
-  </label>
-  <label style={{color: 'black'}}>
-    <input className='sex' onChange={handleChange} disabled={!changeClick} type="radio" name="sex" value="2" checked={formData.sex == '2'}/>
-    Nữ
-  </label>
-         </div>
-         <Box sx ={{gap: 1, display: 'flex', alignItems: 'center'}}>
-         <label style={{color: 'black'}}>Trình độ hiện tại: </label>
-            <select className="level" value={formData.level} disabled={!changeClick} name="level" onChange={handleChange} style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '10vw', fontSize: '17px', paddingLeft: '7px'}}>
-          <option value="N1">N1</option>
-          <option value="N2">N2</option>
-          <option value="N3">N3</option>
-          <option value="N4">N4</option>
-          <option value="N5">N5</option>
-          </select>
-          </Box>
-         {!changeClick && <Button onClick={changeClickButton} style={{width: '100px'}}>Chỉnh sửa</Button>}
-      </form>
-      {changeClick && <SubmitButton onClick={submit}>Cập nhật</SubmitButton>}
-    </Box>)}
-    </div>
-  )
+        return (
+          <div>
+            {login && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  zIndex: "10",
+                  top: "0",
+                  right: "0",
+                  width: "25vw",
+                  height: "100vh",
+                  backgroundColor: "#fff",
+                  transition: 'linear',
+                  paddingTop: '30px',
+                }}
+                autoComplete="off"
+              >
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                  <img src={preview || image} style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '100%', border: '2px solid #9ea4ad' }} />
+                </div>
+        
+                {changeClick && (
+                  <form onSubmit={handleSubmitt} style={{ marginLeft: '38%', marginTop: '10px' }}>
+                    <input type="file" name='user__img' accept="image/*" onChange={handleFileChange}></input>
+                  </form>
+                )}
+        
+                <form onSubmit={handleSubmit} style={{ marginLeft: '25px', width: '85%' }}>
+                  <br />
+                  <label className="name__label" style={{ color: '#000' }}>Full Name</label>
+                  <br />
+                  <input
+                    className="name"
+                    value={formData.name}
+                    disabled={!changeClick}
+                    name="name"
+                    type="text"
+                    onChange={handleChange}
+                    required
+                    style={{
+                      outline: 'none',
+                      borderRadius: '5px',
+                      border: '1px solid #b8b2b2',
+                      height: '35px',
+                      width: '100%',
+                      fontSize: '17px',
+                      paddingLeft: '5px',
+                      marginTop: '10px',
+                      marginBottom: '10px'
+                    }}
+                  ></input>
+                  <br />
+                  <label className="gmail__label" style={{ color: '#000' }}>E-mail</label>
+                  <br />
+                  <input
+                    className="gmail"
+                    disabled={!changeClick}
+                    value={formData.gmail}
+                    name="gmail"
+                    onChange={handleChange}
+                    type="text"
+                    required
+                    style={{
+                      outline: 'none',
+                      borderRadius: '5px',
+                      border: '1px solid #b8b2b2',
+                      height: '35px',
+                      width: '100%',
+                      fontSize: '17px',
+                      paddingLeft: '5px',
+                      marginTop: '10px',
+                      marginBottom: '10px'
+                    }}
+                  ></input>
+                  <br />
+                  <label className="phone__label" style={{ color: '#000' }}>Phone Number</label>
+                  <br />
+                  <input
+                    className="phone__number"
+                    disabled={!changeClick}
+                    value={formData.phone__number}
+                    onChange={handleChange}
+                    name="phone__number"
+                    type="text"
+                    required
+                    style={{
+                      outline: 'none',
+                      borderRadius: '5px',
+                      border: '1px solid #b8b2b2',
+                      height: '35px',
+                      width: '100%',
+                      fontSize: '17px',
+                      paddingLeft: '5px',
+                      marginTop: '10px',
+                      marginBottom: '10px'
+                    }}
+                  ></input>
+                  <br />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <p style={{ color: 'black' }}>Gender:</p>
+                    <label style={{ color: 'black' }}>
+                      <input
+                        className='sex'
+                        onChange={handleChange}
+                        disabled={!changeClick}
+                        type="radio"
+                        name="sex"
+                        value="1"
+                        checked={formData.sex == '1'}
+                      />
+                      Male
+                    </label>
+                    <label style={{ color: 'black' }}>
+                      <input
+                        className='sex'
+                        onChange={handleChange}
+                        disabled={!changeClick}
+                        type="radio"
+                        name="sex"
+                        value="2"
+                        checked={formData.sex == '2'}
+                      />
+                      Female
+                    </label>
+                  </div>
+                  <Box sx={{ gap: 1, display: 'flex', alignItems: 'center' }}>
+                    <label style={{ color: 'black' }}>Current Level: </label>
+                    <select
+                      className="level"
+                      value={formData.level}
+                      disabled={!changeClick}
+                      name="level"
+                      onChange={handleChange}
+                      style={{
+                        outline: 'none',
+                        borderRadius: '7px',
+                        border: '1px solid #e6e4e3',
+                        height: '35px',
+                        width: '10vw',
+                        fontSize: '17px',
+                        paddingLeft: '7px'
+                      }}
+                    >
+                      <option value="N1">N1</option>
+                      <option value="N2">N2</option>
+                      <option value="N3">N3</option>
+                      <option value="N4">N4</option>
+                      <option value="N5">N5</option>
+                    </select>
+                  </Box>
+                  {!changeClick && <Button onClick={changeClickButton} style={{ width: '100px' }}>Edit</Button>}
+                </form>
+                {changeClick && <SubmitButton onClick={submit}>Update</SubmitButton>}
+              </Box>
+            )}
+          </div>
+        )
+        
     }

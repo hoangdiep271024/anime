@@ -170,7 +170,7 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
       }}
     />
     
-    <SubmitButton style={{marginLeft: '30%'}} type="submit" value="Đăng nhập" />
+    <SubmitButton style={{marginLeft: '30%'}} type="submit" value="Login" />
   </div>
 </form>
       <div style={{display: 'flex', fontSize:'13px', width: '100%', justifyContent: 'center'}}>

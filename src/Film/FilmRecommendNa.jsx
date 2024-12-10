@@ -4,26 +4,29 @@ import { Box } from '@mui/material';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import Skeleton from '@mui/material/Skeleton';
 import { Link } from 'react-router-dom';
-
-export default function NewFilm() {
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+export default function FilmRecommendNa({change}) {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 6;
-  const [visibleMovies, setVisibleMovies] = useState([]);
+  const [visibleMovies, setVisibleMovies] = useState();
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true); 
+
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/anime/lastestepisode', {
+      const response = await fetch('https://animetangobackend.onrender.com/api/recommend/user/naivebayes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({jwt : localStorage.getItem('jwt')})
       });
 
       if (response.ok) {
         const dataa = await response.json();
-        setData(dataa);
-        setVisibleMovies(dataa.slice(0, itemsPerPage));
+        console.log(dataa)
+        setData(dataa.data.recommended_anime);
+        setVisibleMovies(dataa.data.recommended_anime.slice(0, itemsPerPage));
         setLoading(false); 
       } else {
         console.error('Lỗi khi lấy dữ liệu:', response.statusText);
@@ -54,8 +57,8 @@ export default function NewFilm() {
   return (
     <Box>
       <div style={{marginLeft: '5%', width: '82%', marginTop: '15px', marginBottom: '15px', justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
-       <div style ={{fontSize: '25px', fontFamily: 'monospace'}}>UPDATE LATEST MOVIE</div> 
-        <Link to ='/new_film' style={{textDecoration: 'none', marginTop: '15px'}}>See more....</Link>
+      <div style ={{fontSize: '25px', fontFamily: 'monospace', display: 'flex', alignItems:'center'}}>RECOMMEND FOR YOU (NAIVE BAYES MODEL) <ChangeCircleIcon style={{fontSize: '30px', cursor: 'pointer'}} onClick= {change}/></div> 
+        <Link to ='/recommend_naiveBayes' style={{textDecoration: 'none', marginTop: '15px'}}>See more....</Link>
       </div>
       <Box sx={{ display: 'flex',marginLeft: '2.5%', width: '95%', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around' }}>
         <ExpandCircleDownIcon sx={{ cursor: 'pointer', fontSize: '50px', rotate: '90deg',display: { xs: 'none', lg: 'block'}}} onClick={handlePrev} />

@@ -12,6 +12,8 @@ import ArticleIcon from '@mui/icons-material/Article';
 import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 import { Button, Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import FilmRate from './FilmRate';
+import FilmComment from './FilmComment';
 function createSlug(name) {
   return name
     .trim() 
@@ -22,6 +24,12 @@ export default function FilmInfo() {
   const navigate = useNavigate();
   const [infoClick, setInfoClick] = useState(true)
   const [watchClick, setWatchClick] = useState(false)
+  const [evaluateClick, setEvaluate] = useState(false)
+  const [comment, setComment] = useState(false)
+  const ClickEvaluate = () => {
+    setEvaluate(!evaluateClick)
+  }
+  const jwt = localStorage.getItem('jwt')
     const [data, setData] = useState()
     const [loading, setLoading] = useState(true)
       const fetchFilm = async () => {
@@ -31,12 +39,11 @@ export default function FilmInfo() {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({anime_id : localStorage.getItem('film_id')}),
+            body: JSON.stringify({anime_id : localStorage.getItem('film_id'), jwt : jwt}),
           });
     
           if (response.ok) {
             const data = await response.json();
-            console.log(data)
             setData(data)
             setLoading(false)
     
@@ -54,6 +61,20 @@ export default function FilmInfo() {
         };
         fetchData();
       }, []);
+      useEffect(() => {
+        if (evaluateClick) {
+          document.body.style.overflow = "hidden";
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Cuộn mượt mà
+          });
+        } else {
+          document.body.style.overflow = "auto";
+        }
+        return () => {
+          document.body.style.overflow = "auto";
+        };
+      }, [evaluateClick]);
 
       const ClickInfo = () => {
         setInfoClick(true)
@@ -67,6 +88,9 @@ export default function FilmInfo() {
         localStorage.setItem('episode_id', episode_id)
         localStorage.setItem('episode', episode)
         navigate(`/film/${name}/${episode}`)
+      }
+      const ClickComment = () => {
+        setComment(!comment)
       }
   return (
     <>
@@ -98,7 +122,8 @@ export default function FilmInfo() {
 </div>
 <div style={{display: 'flex', gap: '4%', marginTop: '10px'}}>
      <Box sx ={{alignItems: 'center', display: 'flex', gap: '3px', borderRadius: '5px', backgroundColor: theme.palette.mode === 'light' ? 'black': 'white', color: theme.palette.mode === 'dark' ? 'black': 'white', paddingX:'7px', paddingY: '3px', cursor: 'pointer'}}><FavoriteIcon/>Like</Box>
-     <Box sx ={{alignItems: 'center', display: 'flex', gap: '3px', borderRadius: '5px', backgroundColor: theme.palette.mode === 'light' ? 'black': 'white', color: theme.palette.mode === 'dark' ? 'black': 'white', paddingX:'7px', paddingY: '3px', cursor: 'pointer'}}>Evaluate</Box>
+     <Box sx ={{alignItems: 'center', display: 'flex', gap: '3px', borderRadius: '5px', backgroundColor: theme.palette.mode === 'light' ? 'black': 'white', color: theme.palette.mode === 'dark' ? 'black': 'white', paddingX:'7px', paddingY: '3px', cursor: 'pointer'}} onClick= {ClickEvaluate}>Evaluate</Box>
+     <Box sx ={{alignItems: 'center', display: 'flex', gap: '3px', borderRadius: '5px', backgroundColor: theme.palette.mode === 'light' ? 'black': 'white', color: theme.palette.mode === 'dark' ? 'black': 'white', paddingX:'7px', paddingY: '3px', cursor: 'pointer'}} onClick= {ClickComment}>Comment</Box>
 </div>
 <div style={{display: 'flex', justifyContent: 'space-between', width: '50vw', marginTop: '20px'}}>
   <Box>
@@ -145,9 +170,46 @@ export default function FilmInfo() {
           return (
           <div key ={index} onClick={() => episodeClick(item.Episode_id, encodeURIComponent(createSlug(data.anime.Name)),item.Episode )} style={{backgroundColor: theme.palette.mode === 'dark' ? '#2a2b2b' : '#d9dbdb', padding: '3px 12px 3px 12px', cursor: 'pointer'}}>{`${item.Episode}`}</div>)
         })}
+
+       
 </Box>
         
         </Box>}
+
+        {evaluateClick && <>
+      <Box
+    sx={{
+      position: "absolute",
+      zIndex: "10",
+      width:'100vw',
+      height: '200vh',
+      backgroundColor: 'rgba(76, 79, 77, 0.5)',
+      top: '0',
+      left: '0',
+       overflow: 'hidden'
+    }}
+    autoComplete="off"
+    onClick = {ClickEvaluate}
+  ></Box>
+  <FilmRate name = {data.anime.Name} img ={data.anime['Image URL']} id ={data.anime.Anime_id} rate = {data.rated}/>
+     </>}
+     {comment && <>
+      <Box
+    sx={{
+      position: "absolute",
+      zIndex: "10",
+      width:'100vw',
+      height: '200vh',
+      backgroundColor: 'rgba(76, 79, 77, 0.5)',
+      top: '0',
+      left: '0',
+       overflow: 'hidden'
+    }}
+    autoComplete="off"
+    onClick = {ClickComment}
+  ></Box>
+  <FilmComment name = {data.anime.Name} img ={data.anime['Image URL']} id ={data.anime.Anime_id} />
+     </>}
 
 
     </>

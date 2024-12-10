@@ -1,25 +1,24 @@
-import React from 'react'
+import  Box from '@mui/material/Box'
+import React, { useState } from 'react'
 import Header from '../component/Header/Header'
-import { Box } from '@mui/material'
-import Footer from '../component/Footer/Footer'
-import { useState, useEffect } from 'react'
-import FilmCard from '../Film/FilmCard'
 import { useTheme } from '@emotion/react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FilmPage from '../Film/FilmPage'
-export default function Category() {
-  const theme = useTheme()
+import { useEffect } from 'react';
+import FilmCard from '../Film/FilmCard';
+import FilmPage from '../Film/FilmPage';
+export default function Bayes() {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
-  const type = localStorage.getItem('type')
+    const theme = useTheme();
+    const level = localStorage.getItem('level')
     const fetchFilm = async () => {
       try {
-        const response = await fetch('https://animetangobackend.onrender.com/api/anime/search', {
+        const response = await fetch('https://animetangobackend.onrender.com/api/recommend/user/decisiontree', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({Type : type, n: '150'}),
+          body: JSON.stringify({jwt : localStorage.getItem('jwt'), n: 30}),
         });
   
         if (response.ok) {
@@ -29,11 +28,11 @@ export default function Category() {
           setLoading(false)
   
         } else {
-          console.error('Error during fetch:', response.statusText);
-        } 
-        } catch (error) {
-          console.error('Network error:', error);
+          console.error('Lỗi khi tai:', response.statusText);
         }
+      } catch (error) {
+        console.error('Lỗi mạng:', error);
+      }
     };
   
     useEffect(() => {
@@ -44,19 +43,17 @@ export default function Category() {
     }, []);
   return (
     <Box>
-        <Header></Header>
-        <div style={{ marginTop: '120px', fontSize: '30px', marginLeft: '2.4%', fontFamily: 'Montserrat', fontWeight: '600', color: theme.palette.mode === 'dark' ? '#c0c2c4' : '#EF4444'}}>{`Category: ${type}`}</div>
+    <Header/>
+    <div style={{ marginTop: '120px', fontSize: '30px', marginLeft: '2.4%', fontFamily: 'Montserrat', fontWeight: '600', color: theme.palette.mode === 'dark' ? '#c0c2c4' : '#EF4444'}}>RECOMMEND FOR YOU (DECISION TREE)</div>
     <div style = {{ display: 'flex', fontSize: '25px', alignItems: 'center', marginLeft: '2.4%', marginTop: '1%', fontFamily: 'mONTSERRAT' }}>
     <div>{`LIST OF FILMS`}</div>
     <ArrowForwardIosIcon style={{ marginTop: '2px', fontSize: '15px', marginTop: '4px'}}/>
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
-
-     {!loading && <Box sx={{width: '80%'}}>
-      <FilmPage data ={data}></FilmPage>
+    {!loading && <Box>
+      <FilmPage data ={data.data.recommended_anime}></FilmPage>
       </Box>}
-        {/* <Footer></Footer> */}
     </Box>
   )
 }

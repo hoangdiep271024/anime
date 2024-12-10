@@ -19,6 +19,7 @@ export default function FilmCard(props) {
     const clickFilm = () => {
       localStorage.setItem('film_id', film_id)
       navigate(`/film/${encodeURIComponent(createSlug(props.name))}`)
+      window.location.reload()
     }
   return (
    <Box sx = {{width: '160px', height: '300px', minHeight: '250px', borderRadius: '7px',cursor: 'pointer', overflow: 'hidden', transition: 'transform 0.5s linear'}} onClick ={clickFilm}>

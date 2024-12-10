@@ -104,7 +104,7 @@ export default function Introduce() {
           </div>
         </Box>
       </Box>
-      <Footer/>
+      {/* <Footer/> */}
     </Box>
   );
 }
