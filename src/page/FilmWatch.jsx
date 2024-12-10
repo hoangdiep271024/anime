@@ -205,7 +205,7 @@ useEffect(() => {
           
           </Box>}
   
-  <Footer/>
+  {/* <Footer/> */}
       </>
     )
   }
