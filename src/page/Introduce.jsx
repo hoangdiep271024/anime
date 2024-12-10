@@ -89,14 +89,14 @@ export default function Introduce() {
         <div style={{ textAlign: 'center', fontSize: '30px', fontWeight: '700', fontFamily: 'monospace' }}>VISION & MISSION</div>
         <div style={{ textAlign: 'center' }}>"To become a leading and trusted educational technology provider in Vietnam"</div>
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10vw', marginTop: '20px' }}>
-          <div style={{ width: '32vw', height: 'auto', minHeight: '25vh', borderRadius: '5px', overflow: 'hidden', backgroundColor: 'white' }}>
+          <div style={{ width: '32vw', height: 'auto', minHeight: '30vh', borderRadius: '5px', overflow: 'hidden', backgroundColor: 'white' }}>
             <div style={{ height: '20%', backgroundColor: '#EF4444', textAlign: 'center', alignContent: 'center', color: 'white', fontSize: '20px' }}>VISION</div>
             <div style={{ marginTop: '10px', marginLeft: '10px', fontSize: '18px' }}>2025: Become the leading provider of innovative solutions for effective and enjoyable Japanese learning</div>
             <br></br>
             <div style={{ marginLeft: '10px', fontSize: '18px' }}>2030: Become the number one provider of sustainable and effective Japanese learning ecosystems</div>
           </div>
 
-          <div style={{ width: '32vw', height: 'auto', minHeight: '25vh', borderRadius: '5px', overflow: 'hidden', backgroundColor: 'white' }}>
+          <div style={{ width: '32vw', height: 'auto', minHeight: '30vh', borderRadius: '5px', overflow: 'hidden', backgroundColor: 'white' }}>
             <div style={{ height: '20%', backgroundColor: '#EF4444', textAlign: 'center', alignContent: 'center', color: 'white', fontSize: '20px' }}>MISSION</div>
             <br></br>
             <br></br>

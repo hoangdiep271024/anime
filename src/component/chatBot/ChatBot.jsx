@@ -61,7 +61,7 @@ export default function ChatBot({closeClick}) {
             value={input}
             onChange={handleInputChange}
             onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-            placeholder="Nhập tin nhắn..." />
+            placeholder="Enter here" />
           <button onClick={handleSendMessage}>
              <SendIcon sx={{width:'20px'}}></SendIcon>
           </button>
