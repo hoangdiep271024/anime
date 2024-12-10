@@ -63,7 +63,7 @@ export default function Category() {
         index={item.Anime_id}
         className="film-card"></FilmCard>)})}
      </Box>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
     </Box>
   )
 }
