@@ -47,7 +47,7 @@ export default function Footer() {
         zIndex: '10'
       }}
     >
-      <svg style={{ position: "fixed", top: "10vh" }}>
+      <svg style={{ position: "fixed", top: "10vh", zIndex: '3' }}>
         <defs>
           <filter id="blob">
             <feGaussianBlur
