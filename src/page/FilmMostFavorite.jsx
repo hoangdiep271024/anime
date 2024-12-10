@@ -5,6 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FilmPage from '../Film/FilmPage';
 import Header from '../component/Header/Header';
 import { useTheme } from '@emotion/react';
+import Footer from '../component/Footer/Footer';
 export default function FilmMostFavorite() {
     const theme = useTheme();
     const [data, setData] = useState();
@@ -49,6 +50,7 @@ export default function FilmMostFavorite() {
     {!loading && <Box>
       <FilmPage data ={data}></FilmPage>
       </Box>}
+      <Footer></Footer>
     </Box>
   )
 }

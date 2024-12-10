@@ -2,6 +2,7 @@ import React from 'react'
 import  Box from '@mui/material/Box'
 import Header from '../component/Header/Header'
 import { useState, useEffect } from 'react'
+import Footer from '../component/Footer/Footer'
 export default function AccountShow() {
   // const [data, setData] = useState()
   // const [loading, setLoading] = useState(true)
@@ -79,7 +80,7 @@ const ClickRelate = () => {
       <FilmPage data ={data2}></FilmPage>
   </Box>}
 </div>
-
+<Footer></Footer>
     </Box>
   )
 }

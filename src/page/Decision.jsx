@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useEffect } from 'react';
 import FilmCard from '../Film/FilmCard';
 import FilmPage from '../Film/FilmPage';
+import Footer from '../component/Footer/Footer';
 export default function Bayes() {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
@@ -54,6 +55,7 @@ export default function Bayes() {
     {!loading && <Box>
       <FilmPage data ={data.data.recommended_anime}></FilmPage>
       </Box>}
+      <Footer></Footer>
     </Box>
   )
 }

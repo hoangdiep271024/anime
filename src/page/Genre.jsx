@@ -6,6 +6,7 @@ import Header from '../component/Header/Header'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FilmCard from '../Film/FilmCard'
 import FilmPage from '../Film/FilmPage'
+import Footer from '../component/Footer/Footer';
 export default function Genre() {
     const theme = useTheme()
     const [data, setData] = useState()
@@ -56,7 +57,7 @@ export default function Genre() {
       <FilmPage data ={data}></FilmPage>
       </Box>}
        
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </Box>
       )
 }

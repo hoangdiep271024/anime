@@ -56,7 +56,7 @@ export default function Category() {
      {!loading && <Box sx={{width: '80%'}}>
       <FilmPage data ={data}></FilmPage>
       </Box>}
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
     </Box>
   )
 }

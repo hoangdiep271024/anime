@@ -24,7 +24,6 @@ export default function FirstScreen() {
             </Box>
             
         </Box> 
-       
     </Box>
   )
 }
