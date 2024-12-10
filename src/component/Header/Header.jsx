@@ -293,10 +293,10 @@ export default function Header() {
           sx={{ borderRadius: '8px', margin: '10px' }} ></Skeleton>}
       </Box>
       <ChangeMode />
-      {!isOpen && <Box sx={{position:'fixed', right: '3vw', top: '90vh', zIndex: '10000'}}>
+      {!isOpen && <Box sx={{position:'fixed', right: '3vw', top: '90vh', zIndex: '10000000'}}>
         <ChatBotToggle toggleChat={toggleChatClick} ></ChatBotToggle>
         </Box>}
-        {isOpen && <Box sx={{position:'fixed', right: '3vw',top:'50vh', width: '23vw', height: '35vh', zIndex: '10000'}}>
+        {isOpen && <Box sx={{position:'fixed', right: '3vw',top:'50vh', width: '23vw', height: '35vh', zIndex: '10000000'}}>
           
           <ChatBot closeClick={toggleChatClick}></ChatBot>
           </Box>}
