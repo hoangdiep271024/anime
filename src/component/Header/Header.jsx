@@ -374,7 +374,7 @@ function PositionedMenu() {
                   zIndex: 11000000000,
                 }}
                 onClick={ClickLogin} />{" "}
-              <Box sx={{position: 'absolute', zIndex: '20', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
+              <Box sx={{position: 'absolute', zIndex: '1100000000020', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
               
             </>}
             {forget && <ForgetPassword CloseClick={ClickForgett}/>}
