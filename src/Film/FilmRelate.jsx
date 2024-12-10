@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import FilmCard from './FilmCard';
 export default function FilmRelate() {
   const [data , setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -37,7 +38,19 @@ export default function FilmRelate() {
   return (
     <>
     {!loading && <Box>
-      
+      <Box sx= {{marginLeft: '10%', fontSize: '25px', marginTop: '30px'}}>LIST FILM RELATE</Box>
+      <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '90%', marginLeft: '10%', marginTop: '25px', }}>
+       {!loading && data.map((item)=> {
+       return (
+       <FilmCard  key={item.Anime_id}
+        image={item["Image URL"]}
+        name={item.Name}
+        level={item.JapaneseLevel}
+        view={item.Members}
+        score={item.Score}
+        index={item.Anime_id}
+        className="film-card"></FilmCard>)})}
+     </Box>
       
       </Box>}
     </>

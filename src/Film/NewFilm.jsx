@@ -69,7 +69,7 @@ export default function NewFilm() {
         />
         <Skeleton 
           variant="rectangular" 
-          width={180} 
+          width={160} 
           height={20} 
           sx={{ borderRadius: '8px', margin: '10px' }} 
         />

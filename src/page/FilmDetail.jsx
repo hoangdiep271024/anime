@@ -8,8 +8,9 @@ export default function FilmDetail() {
     <>
     <Header></Header>
     <FilmInfo/>
-    {/* <Footer></Footer> */}
+    
     <FilmRelate/>
+    <Footer></Footer>
     </>
   )
 }

@@ -13,6 +13,7 @@ import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 import { Button, Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Header from '../component/Header/Header';
+import Footer from '../component/Footer/Footer';
 
 function createSlug(name) {
     return name
@@ -122,7 +123,7 @@ function createSlug(name) {
     </Box>
     {data.episodes.map((item, index) => {
       return item.Episode_id == localStorage.getItem('episode_id') && (
-        <div style={{ overflow: 'hidden', width: '1163px', height: '515px', position: 'relative', marginTop: '20px', marginLeft: `calc((100vw - 1163px) / 2)`}}>
+        <div style={{ overflow: 'hidden', width: '1163px', height: '592px', position: 'relative', marginTop: '20px', marginLeft: `calc((100vw - 1163px) / 2)`}}>
   <iframe
     allowFullScreen
     key={index}
@@ -158,7 +159,7 @@ function createSlug(name) {
           
           </Box>}
   
-  
+  <Footer/>
       </>
     )
   }

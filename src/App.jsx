@@ -8,6 +8,7 @@ import Level from "./page/Level";
 import AccountShow from "./page/AccountShow";
 import FilmDetail from "./page/FilmDetail";
 import FilmWatch from "./page/FilmWatch";
+import Category from "./page/Category";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/account" element= {<AccountShow/>}/>
         <Route path="/film/:film_name" element= {<FilmDetail/>}/>
         <Route path="/film/:film_name/:episode" element= {<FilmWatch/>}/>
+        <Route path="/Category/:category" element= {<Category/>}/>
       </Routes>
     </Router>);
 
