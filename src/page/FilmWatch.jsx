@@ -159,7 +159,7 @@ function createSlug(name) {
           
           </Box>}
   
-  <Footer/>
+  {/* <Footer/> */}
       </>
     )
   }

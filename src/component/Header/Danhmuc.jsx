@@ -31,6 +31,7 @@ export default function Danhmuc() {
         >
             {links.map((link, index) => (
                 <Box
+                   
                     key={index}
                     className='type__div'
                     sx={{
@@ -44,6 +45,7 @@ export default function Danhmuc() {
                     }}
                 >
                     <Link
+                        onClick={() => localStorage.setItem('type', link.label)}
                         href={link.url} 
                         style={{
                             textDecoration: 'none',

@@ -48,7 +48,7 @@ export default function Home() {
     <NewFilm/>
     <Box sx ={{marginTop: '5%'}}> <TvFilm/></Box>
     <Box sx ={{marginTop: '5%'}}> <Favourite/></Box>
-  <Footer></Footer>
+  {/* <Footer></Footer> */}
  
 
     </>
