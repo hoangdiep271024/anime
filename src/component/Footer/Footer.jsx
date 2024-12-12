@@ -47,7 +47,7 @@ export default function Footer() {
         zIndex: '10'
       }}
     >
-      <svg style={{ position: "fixed", top: "10vh" }}>
+      {/* <svg style={{ position: "fixed", top: "10vh" }}>
         <defs>
           <filter id="blob">
             <feGaussianBlur
@@ -64,7 +64,7 @@ export default function Footer() {
             <feComposite in="SourceGraphic" in2="blob" operator="atop" />
           </filter>
         </defs>
-      </svg>
+      </svg> */}
       <div className="bubbles" style={{ width: '93vw' }}>{renderBubbles()}</div>
       <div style={{ display: 'flex', marginTop: '40px', zIndex: '10', color: 'white', justifyContent: 'space-around', width: '100vw' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '300px', height: '60px' }}>
