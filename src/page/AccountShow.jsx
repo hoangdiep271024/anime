@@ -3,6 +3,7 @@ import  Box from '@mui/material/Box'
 import Header from '../component/Header/Header'
 import { useState, useEffect } from 'react'
 import Footer from '../component/Footer/Footer'
+import FilmPage from '../Film/FilmPage'
 export default function AccountShow() {
   // const [data, setData] = useState()
   // const [loading, setLoading] = useState(true)
@@ -72,14 +73,14 @@ const ClickRelate = () => {
  {!unfinishedClick && <div style={{cursor: 'pointer'}} onClick={ClickUnfinished}>Unfinished films</div>}
   {rateClick &&<div style={{cursor: 'pointer', textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '10px'}} onClick={ClickRelate}>Rated films</div>}
   {!rateClick &&<div style={{cursor: 'pointer'}} onClick={ClickRelate}>Rated films</div>}
-
-{unfinishedClick && data1 && <Box>
+  </div>
+{unfinishedClick && data1 && <Box sx= {{marginTop: '50px'}}>
       <FilmPage data ={data1}></FilmPage>
   </Box>}
-  {rateClick && data1 && <Box>
+  {rateClick && data1 && <Box sx= {{marginTop: '50px'}}>
       <FilmPage data ={data2}></FilmPage>
   </Box>}
-</div>
+
 <Footer></Footer>
     </Box>
   )

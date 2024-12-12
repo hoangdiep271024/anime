@@ -293,10 +293,10 @@ export default function Header() {
           sx={{ borderRadius: '8px', margin: '10px' }} ></Skeleton>}
       </Box>
       <ChangeMode />
-      {!isOpen && <Box sx={{position:'fixed', right: '3vw', top: '90vh', zIndex: '10000000'}}>
+      {!isOpen && <Box sx={{position:'fixed', right: '3vw', top: '90vh', zIndex: '10000'}}>
         <ChatBotToggle toggleChat={toggleChatClick} ></ChatBotToggle>
         </Box>}
-        {isOpen && <Box sx={{position:'fixed', right: '3vw',top:'50vh', width: '23vw', height: '35vh', zIndex: '10000000'}}>
+        {isOpen && <Box sx={{position:'fixed', right: '3vw',top:'50vh', width: '23vw', height: '35vh', zIndex: '10000'}}>
           
           <ChatBot closeClick={toggleChatClick}></ChatBot>
           </Box>}
@@ -371,10 +371,10 @@ function PositionedMenu() {
                   width: "100%",
                   height: "100%",
                   backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  zIndex: 11000000000,
+                  zIndex: 11,
                 }}
                 onClick={ClickLogin} />{" "}
-              <Box sx={{position: 'absolute', zIndex: '1100000000020', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
+              <Box sx={{position: 'absolute', zIndex: '20', top :'0', left:'0'}}><Login CloseIconn={ClickLogin} onSetForgotPassword={ClickForget}></Login></Box>  
               
             </>}
             {forget && <ForgetPassword CloseClick={ClickForgett}/>}

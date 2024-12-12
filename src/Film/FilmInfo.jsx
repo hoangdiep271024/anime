@@ -92,6 +92,10 @@ export default function FilmInfo() {
       const ClickComment = () => {
         setComment(!comment)
       }
+      const clickType = (type) => {
+          localStorage.setItem('genre', type)
+          navigate(`/genre/${encodeURIComponent(createSlug(type))}`)
+      }
   return (
     <>
     {!loading && 
@@ -102,7 +106,7 @@ export default function FilmInfo() {
       <div style={{display: 'flex', gap: '4px'}}>
   Genres: {data?.anime?.Genres?.map((item, index) => (
     <Box key={index} sx ={{display: 'flex'}}>
-    <Link style={{textDecoration: 'none', cursor: 'pointer'}}>
+    <Link onClick = {() => clickType(item)} style={{textDecoration: 'none', cursor: 'pointer'}}>
       {item}
     </Link>
      <div>{index < data.anime.Genres.length - 1 ? ', ' : ''}</div>

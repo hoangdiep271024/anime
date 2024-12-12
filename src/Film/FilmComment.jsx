@@ -27,12 +27,16 @@ export default function FilmRate(props) {
     
           if (response.ok) {
             const data = await response.json();
-              console.log('Comment:', data.message);
+            if(data.success){
               setOkMessage(`Comment: ${data.message}`);
               setTimeout(() => {
                  window.location.reload();
               }, 2500);
-           
+            }
+            else{
+              setErrorMessage(`Comment: ${data.message}`);
+            }
+            
             }
            else {
             setErrorMessage(`Comment failed: ${response.statusText}`);

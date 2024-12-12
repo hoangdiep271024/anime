@@ -55,7 +55,7 @@ export default function Bayes() {
     {!loading && <Box>
       <FilmPage data ={data.data}></FilmPage>
       </Box>}
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </Box>
   )
 }
