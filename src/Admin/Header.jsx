@@ -12,7 +12,7 @@ export default function Header() {
         setMenuIconClick(!menuIconClick)
     }
   return (
-    <Box sx={{position: 'fixed', height: '60px', width: '100%', borderBottom: `1px solid ${theme.palette.mode === 'light' ? '#585d66' : '#84868a'}`, display: 'flex', alignItems: 'center', paddingLeft: '20px', gap: '20px'}}>
+    <Box sx={{position: 'fixed', height: '60px', width: '100%', borderBottom: `1px solid ${theme.palette.mode === 'light' ? '#585d66' : '#84868a'}`, display: 'flex', alignItems: 'center', paddingLeft: '20px', gap: '20px', backgroundColor:theme.palette.mode === 'light' ? '#FFFFFF' : '#212120'}}>
      {!menuIconClick &&  <IconButton onClick ={clickMenu} style={{width: '45px', height: '45px'}}><MenuIcon  style ={{fontSize: '30px',cursor: 'pointer', transition: 'all 0.3s ease'}}></MenuIcon></IconButton>}
      {menuIconClick && <IconButton onClick ={clickMenu} style={{width: '45px', height: '45px'}}><MenuOpenIcon style ={{fontSize: '30px',cursor: 'pointer', transition: 'all 0.3s ease'}}></MenuOpenIcon></IconButton>}
      <Link

@@ -10,7 +10,7 @@ export default function FilmDetail() {
     <Header></Header>
     <FilmInfo/>
     <FilmGetComment></FilmGetComment>
-    <FilmRelate/>
+    {/* <FilmRelate/> */}
     {/* <Footer></Footer> */}
     </>
   )

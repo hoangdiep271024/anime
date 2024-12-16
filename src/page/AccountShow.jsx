@@ -31,7 +31,7 @@ export default function AccountShow() {
   }, []);
 
   useEffect(() => {
-    fetch('https://animetangobackend.onrender.com/api/userInfo', {
+    fetch('https://animetangobackend.onrender.com/user/userInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -62,9 +62,9 @@ const ClickRelate = () => {
 <Header/>
 <div style={{marginTop: '100px', height: '100px', width: '100vw', position: 'relative'}}>
 <img src= '/block.jpg' style={{width: '100vw', height: '100px'}}></img>
-{userInfor && <div style={{  position: 'absolute', top: '70px', zIndex: '7', left: '20vw', display: 'flex', alignItems: 'end'}}>
+{userInfor && <div style={{  position: 'absolute', top: '70px', zIndex: '7', left: '20vw', display: 'flex', flexWrap: 'nowrap', alignItems: 'end'}}>
   <img src ={userInfor.user_img} style={{width: '100px', height : "100px", borderRadius: '100%', objectFit: 'cover', border: '1px solid #fafafa'}}></img>
-  <div style={{fontSize: '20px', position: 'absolute', left: '100px', bottom: '15px', marginLeft: '18px'}}>{userInfor.full_name}</div>
+  <div style={{fontSize: '20px',width: '300px', position: 'absolute', left: '100px', bottom: '15px', marginLeft: '18px'}}>{userInfor.full_name}</div>
 </div>}
 
 </div>

@@ -51,7 +51,7 @@ export default function Profile() {
       formData.append('jwt', jwt);
       try {
         setUploadStatus('Đang tải lên...');
-        const response = await axios.post('https://animetangobackend.onrender.com/api/uploadImage', formData, {
+        const response = await axios.post('https://animetangobackend.onrender.com/user/uploadImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -71,7 +71,7 @@ export default function Profile() {
       console.log(uploadStatus)
     };
     useEffect(() => {
-      fetch('https://animetangobackend.onrender.com/api/userInfo', {
+      fetch('https://animetangobackend.onrender.com/user/userInfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

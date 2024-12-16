@@ -33,16 +33,14 @@ export default function Navbar() {
     const [itemIndex, setItemIndex] = useState(null)
     const [userIndex, setUserIndex] = useState(null)
     const films = [
-      { label: 'OverView', url: '/admin/filmoverview', icon: <LayersIcon></LayersIcon> },
-        { label: 'Add film', url: '/admin/addfilm', icon: <VideoCallIcon></VideoCallIcon>},
-        { label: 'Remove film', url: '/admin/removefilm', icon: <DeleteIcon></DeleteIcon> },
-        { label: 'Edit film', url: '/admin/editfilm', icon: <EditIcon></EditIcon> },
-        { label: 'Film Episode', url: '/admin/filmepisode', icon: <AirplayIcon></AirplayIcon> },
+      { label: 'OverView', url: '/admin/filmOverview', icon: <LayersIcon></LayersIcon> },
+        { label: 'Add film', url: '/admin/filmAdd', icon: <VideoCallIcon></VideoCallIcon>},
+        { label: 'Film Episode', url: '/admin/filmEpisode', icon: <AirplayIcon></AirplayIcon> },
     ]
     const users = [
-      { label: 'OverView', url: '/admin/useroverview', icon: <LayersIcon></LayersIcon> },
-      { label: 'Add user', url: '/admin/adduser', icon: <VideoCallIcon></VideoCallIcon>},
-      { label: 'Remove user', url: '/admin/removeuser', icon: <DeleteIcon></DeleteIcon> },
+      { label: 'OverView', url: '/admin/userOverview', icon: <LayersIcon></LayersIcon> },
+      { label: 'Add user', url: '/admin/userAdd', icon: <VideoCallIcon></VideoCallIcon>},
+      { label: 'Remove user', url: '/admin/userRemove', icon: <DeleteIcon></DeleteIcon> },
     ]
     const clickitem = (a, index) => {
       navigate(`${a}`)

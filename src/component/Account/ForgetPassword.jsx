@@ -127,7 +127,7 @@ export default function ForgetPassword({CloseClick}) {
      const handleSubmittt = async (e) => {
       e.preventDefault();
      try {
-       const response = await fetch(`https://animetangobackend.onrender.com/api/forgotPassword/changePassword`, {
+       const response = await fetch(`https://animetangobackend.onrender.com/user/forgotPassword/changePassword`, {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',

@@ -66,7 +66,7 @@ export default function FilmInfo() {
           document.body.style.overflow = "hidden";
           window.scrollTo({
             top: 0,
-            behavior: "smooth", // Cuộn mượt mà
+            behavior: "smooth",
           });
         } else {
           document.body.style.overflow = "auto";

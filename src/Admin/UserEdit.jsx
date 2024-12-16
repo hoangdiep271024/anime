@@ -3,31 +3,17 @@ import Box from '@mui/system/Box'
 import { useState, useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
-export default function FilmEdit() {
+export default function UserEdit() {
   const [formData, setFormData] = useState({
-    Name: '',
-    'English name': '',
-    Score: '',
-    Genres: '',
-    Synopsis: '',
-    Type: '',
-    Episodes: '',
-    Aired: '',
-    Premiered: '',
-    Status: '',
-    Producers: '',
-    Licensors: '',
-    Studios: '',
-    Source: '',
-    Duration: '',
-    Rank: '',
-    Popularity: '',
-    Favorites: '',
-    'Scored By' : '',
-    Members: '',
-    'Image URL' : '',
-    Old: '',
-    JapaneseLevel: '',
+    user_id: '',
+    full_name: '',
+    date_of_birth: '',
+    role: '',
+    user_img: '',
+    email: '',
+    phone_number: '',
+    sex: '',
+    japanese_level: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
 const [okMessage, setOkMessage]= useState('')
@@ -45,7 +31,7 @@ const [data, setData] = useState()
     e.preventDefault();
 
     try {
-      const response = await fetch(`https://animetangobackend.onrender.com/admin/anime/${localStorage.getItem('film_id')}`, {
+      const response = await fetch(`https://animetangobackend.onrender.com/admin/user/${localStorage.getItem('user_id')}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -75,66 +61,62 @@ const [data, setData] = useState()
       setErrorMessage(`Network error: ${error}`);
     }
   };
-  const fetchFilm = async () => {
+  const fetchUser = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/anime/animeInfo', {
-        method: 'POST',
+      const response = await fetch('https://animetangobackend.onrender.com/admin/user', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({anime_id : localStorage.getItem('film_id')}),
       });
-
+  
       if (response.ok) {
-        const data = await response.json();
-        setData(data)
-        setLoading(false)
-        console.log(data)
-
+        const dataa = await response.json();
+        if (dataa.success) {
+          const storedUserId = localStorage.getItem('user_id'); 
+  
+          if (storedUserId) {
+            
+            const matchedUser = dataa.users.find(item => item.user_id == storedUserId);
+  
+            if (matchedUser) {
+              setData(matchedUser); 
+              console.log(matchedUser)
+            } 
+          } else {
+            console.error('user_id không tồn tại trong localStorage.');
+          }
+  
+          setLoading(false);
+        }
       } else {
-        console.error('Lỗi khi đăng nhập:', response.statusText);
+        console.error('Lỗi khi lấy dữ liệu:', response.statusText);
       }
     } catch (error) {
       console.error('Lỗi mạng:', error);
     }
   };
-
+  
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchFilm();
-    };
-    fetchData();
+    fetchUser();
   }, []);
-
+  
   useEffect(() => {
     if (data) {
       setFormData({
-        Name: data.anime.Name || '',
-        'English name': data.anime['English name'] || '',
-        Score: data.anime.Score || '',
-        Genres: data.anime.Genres || '',
-        Synopsis: data.anime.Synopsis || '',
-        Type: data.anime.Type || '',
-        Episodes: data.anime.Episodes || '',
-        Aired: data.anime.Aired || '',
-        Premiered: data.anime.Premiered || '',
-        Status: data.anime.Status || '',
-        Producers: data.anime.Producers || '',
-        Licensors: data.anime.Licensors || '',
-        Studios: data.anime.Studios || '',
-        Source: data.anime.Source || '',
-        Duration: data.anime.Duration || '',
-        Rank: data.anime.Rank || '',
-        Popularity: data.anime.Popularity || '',
-        Favorites: data.anime.Favorites || '',
-        'Scored By': data.anime['Scored By'] || '',
-        Members: data.anime.Members || '',
-        'Image URL': data.anime['Image URL'] || '',
-        Old: data.anime.Old || '',
-        JapaneseLevel: data.anime.JapaneseLevel || '',
+        user_id: data.user_id || '', 
+        full_name: data.full_name || '',
+        date_of_birth: data.date_of_birth || '',
+        role: data.role || '',
+        user_img: data.user_img || '',
+        email: data.email || '',
+        phone_number: data.phone_number || '',
+        sex: data.sex || '',
+        japanese_level: data.japanese_level || '',
       });
     }
   }, [data]);
+  
   
   useEffect(() => {
     if (errorMessage) {

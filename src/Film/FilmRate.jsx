@@ -27,15 +27,15 @@ export default function FilmRate(props) {
     
           if (response.ok) {
             const data = await response.json();
-              if(data.success) {
+              // if(data.success) {
                 setOkMessage(`Rate: ${data.message}`);
                 setTimeout(() => {
                    window.location.reload();
                 }, 2500);
-              }
-              else{
-                setErrorMessage(`Rate failed: ${data.message}`)
-              }
+              // }
+              // else{
+              //   setErrorMessage(`Rate failed: ${data.message}`)
+              // }
              
            
             }

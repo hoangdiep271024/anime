@@ -14,6 +14,8 @@ import UserAdd from './UserAdd';
 import UserRemove from './UserRemove';
 import FilmEpisode from './FilmEpisode'
 import UserOverView from './UserOverView'
+import FilmDetail from './FilmDetail';
+import UserEdit from './UserEdit';
 // import Footer from '../component/Footer/Footer'
 
 export default function Login() {
@@ -32,13 +34,15 @@ export default function Login() {
           <Route path="films" element={<Films />} />
           <Route path="filmOverview" element={<FilmOverView />} />
           <Route path="filmAdd" element={<FilmAdd />} />
-          <Route path="filmRemove" element={<FilmRemove />} />
-          <Route path="filmEdit" element={<FilmEdit />} />
           <Route path="filmEpisode" element={<FilmEpisode />} />
           <Route path="userOverview" element={<UserOverView/>} />
           <Route path="userAdd" element={<UserAdd/>} />
           <Route path="userRemove" element={<UserRemove />} />
+          <Route path="userEdit/:user_id" element={<UserEdit/>} />
           <Route path="filmoverview" element={<FilmOverView />} />
+          <Route path="film/:filmName" element={<FilmDetail/>} />
+          <Route path="filmEdit/:filmName" element={<FilmEdit/>} />
+          
         </Routes>
       </Box>
     </>
