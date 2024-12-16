@@ -14,7 +14,7 @@ export default function FilmRecommendNa({change}) {
 
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/recommend/user/naivebayes', {
+      const response = await fetch('https://animetangobackend.onrender.com/naivebayes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

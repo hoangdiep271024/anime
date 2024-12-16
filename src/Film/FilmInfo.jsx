@@ -34,7 +34,7 @@ export default function FilmInfo() {
     const [loading, setLoading] = useState(true)
       const fetchFilm = async () => {
         try {
-          const response = await fetch('https://animetangobackend.onrender.com/api/anime/animeInfo', {
+          const response = await fetch('https://animetangobackend.onrender.com/anime/animeInfo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

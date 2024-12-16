@@ -39,7 +39,7 @@ export default function Header() {
   const jwt = localStorage.getItem('jwt')
   const [query, setQuery] =useState()
   useEffect(() => {
-    fetch('https://animetangobackend.onrender.com/api/userInfo', {
+    fetch('https://animetangobackend.onrender.com/user/userInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

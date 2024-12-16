@@ -60,7 +60,7 @@ export default function ForgetPassword({CloseClick}) {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await fetch(`https://animetangobackend.onrender.com/api/forgotPassword`, {
+          const response = await fetch(`https://animetangobackend.onrender.com/user/forgotPassword`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export default function ForgetPassword({CloseClick}) {
       const handleSubmitt = async (e) => {
         e.preventDefault();
        try {
-         const response = await fetch(`https://animetangobackend.onrender.com/api/forgotPassword/check`, {
+         const response = await fetch(`https://animetangobackend.onrender.com/user/forgotPassword/check`, {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',

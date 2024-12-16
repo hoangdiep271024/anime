@@ -22,7 +22,7 @@ export default function Home() {
   const [isLogin, setIsLogin ] = useState(false)
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/anime/search', {
+      const response = await fetch('https://animetangobackend.onrender.com/anime/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export default function Home() {
     setKnn(false)
   }
   useEffect(() => {
-    fetch('https://animetangobackend.onrender.com/api/userInfo', {
+    fetch('https://animetangobackend.onrender.com/user/userInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,8 +94,8 @@ export default function Home() {
     <Box sx ={{marginTop: '5%'}}> <TvFilm/></Box>
     <Box sx ={{marginTop: '5%'}}> <Favourite/></Box>
 
-  <Footer></Footer>
- 
+  {/* <Footer></Footer>
+  */}
 
     </>
   )

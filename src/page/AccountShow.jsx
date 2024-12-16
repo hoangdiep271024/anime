@@ -15,7 +15,7 @@ export default function AccountShow() {
   const [data1, setData1] = useState()
   const [data2, setData2] = useState()
   useEffect(() => {
-    fetch('https://animetangobackend.onrender.com/api/anime/unfinished', {
+    fetch('https://animetangobackend.onrender.com/anime/unfinished', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const ClickRelate = () => {
       <FilmPage data ={data2}></FilmPage>
   </Box>}
 
-<Footer></Footer>
+{/* <Footer></Footer> */}
     </Box>
   )
 }

@@ -16,6 +16,7 @@ import Bayes from "./page/Bayes";
 import Decision from "./page/Decision";
 import Knn from "./page/Knn";
 import Search from "./page/Search";
+import Login from "./Admin/Login";
 function App() {
   return (
     <Router>
@@ -37,6 +38,8 @@ function App() {
         <Route path="/recommend_decisionTree" element= {<Decision/>}/>
         <Route path="/recommend_knn" element= {<Knn/>}/>
         <Route path="/search/:query" element= {<Search/>}/>
+        <Route path="/admin/*" element= {<Login/>}/>
+        {/* <Route path="/admin/*" element={<Admin />} /> */}
       </Routes>
     </Router>);
 

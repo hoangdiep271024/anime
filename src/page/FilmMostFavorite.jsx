@@ -12,7 +12,7 @@ export default function FilmMostFavorite() {
     const [loading, setLoading] = useState(true); 
     const fetchFilm = async () => {
         try {
-          const response = await fetch('https://animetangobackend.onrender.com/api/anime/mostfavorites', {
+          const response = await fetch('https://animetangobackend.onrender.com/anime/mostfavorites', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export default function FilmMostFavorite() {
     {!loading && <Box>
       <FilmPage data ={data}></FilmPage>
       </Box>}
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </Box>
   )
 }

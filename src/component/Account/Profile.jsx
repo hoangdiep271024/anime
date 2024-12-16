@@ -121,7 +121,7 @@ export default function Profile() {
       };
       const handleSubmit = async () => {
         try {
-          const response = await fetch('https://animetangobackend.onrender.com/api/userInfo/update', {
+          const response = await fetch('https://animetangobackend.onrender.com/user/userInfo/update', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

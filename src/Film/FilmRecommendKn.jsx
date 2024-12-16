@@ -14,7 +14,7 @@ export default function FilmRecommendKn({change}) {
 
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/recommend/user/knn', {
+      const response = await fetch('https://animetangobackend.onrender.com/knn', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

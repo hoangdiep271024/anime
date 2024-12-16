@@ -13,7 +13,7 @@ export default function NewFilm() {
   const [loading, setLoading] = useState(true); 
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/anime/lastestepisode', {
+      const response = await fetch('https://animetangobackend.onrender.com/anime/lastestepisode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

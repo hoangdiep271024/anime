@@ -29,7 +29,7 @@ const [isLastestEpisode, setIsLastestEpisode] = useState(false);
 
 const fetchFilm = async () => {
   try {
-    const response = await fetch('https://animetangobackend.onrender.com/api/anime/animeInfo', {
+    const response = await fetch('https://animetangobackend.onrender.com/anime/animeInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const jwt = localStorage.getItem('jwt');
 
 const fetchWatch = async () => {
   try {
-    const response = await fetch('https://animetangobackend.onrender.com/api/user/watch', {
+    const response = await fetch('https://animetangobackend.onrender.com/userAnime/watch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

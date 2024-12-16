@@ -13,7 +13,7 @@ export default function FilmRecommendDe({change}) {
   const [loading, setLoading] = useState(true); 
   const fetchFilm = async () => {
     try {
-      const response = await fetch('https://animetangobackend.onrender.com/api/recommend/user/decisiontree', {
+      const response = await fetch('https://animetangobackend.onrender.com/decisiontree', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

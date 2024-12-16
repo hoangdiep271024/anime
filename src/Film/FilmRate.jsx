@@ -17,7 +17,7 @@ export default function FilmRate(props) {
           }
         try {
 
-          const response = await fetch('https://animetangobackend.onrender.com/api/user/rate', {
+          const response = await fetch('https://animetangobackend.onrender.com/userAnime/rate', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

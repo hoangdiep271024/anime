@@ -14,7 +14,7 @@ export default function Category() {
   const type = localStorage.getItem('type')
     const fetchFilm = async () => {
       try {
-        const response = await fetch('https://animetangobackend.onrender.com/api/anime/search', {
+        const response = await fetch('https://animetangobackend.onrender.com/anime/search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export default function Category() {
      {!loading && <Box sx={{width: '80%'}}>
       <FilmPage data ={data}></FilmPage>
       </Box>}
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
     </Box>
   )
 }

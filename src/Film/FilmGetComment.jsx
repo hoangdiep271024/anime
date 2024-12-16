@@ -7,7 +7,7 @@ export default function FilmGetComment() {
     const [loading, setLoading] = useState(true)
       const fetchComment = async () => {
         try {
-          const response = await fetch('https://animetangobackend.onrender.com/api/anime/getcomment', {
+          const response = await fetch('https://animetangobackend.onrender.com/anime/getcomment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

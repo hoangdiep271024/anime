@@ -13,7 +13,7 @@ export default function Search() {
   const [loading, setLoading] = useState(true)
     const fetchFilm = async () => {
         try {
-          const response = await fetch('https://animetangobackend.onrender.com/api/anime/searchbyname', {
+          const response = await fetch('https://animetangobackend.onrender.com/anime/searchbyname', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
