@@ -7,6 +7,7 @@ import FilmPage from '../Film/FilmPage'
 export default function AccountShow() {
   // const [data, setData] = useState()
   // const [loading, setLoading] = useState(true)
+  const defaultImage = '/avatar.jpg'
   const [userInfor, setUserInfor] = useState([]);
   const [loading, setLoading] =useState(true)
   const [unfinishedClick, setUnfinishedClick] = useState(true)
@@ -26,6 +27,21 @@ export default function AccountShow() {
       .then(responseData => {
         console.log(responseData)
         setData1(responseData)
+      })
+      .catch(error => console.error('Error:', error));
+  }, []);
+  useEffect(() => {
+    fetch('https://animetangobackend.onrender.com/anime/animerated', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({jwt : jwt})
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData)
+        setData2(responseData)
       })
       .catch(error => console.error('Error:', error));
   }, []);
@@ -63,7 +79,7 @@ const ClickRelate = () => {
 <div style={{marginTop: '100px', height: '100px', width: '100vw', position: 'relative'}}>
 <img src= '/block.jpg' style={{width: '100vw', height: '100px'}}></img>
 {userInfor && <div style={{  position: 'absolute', top: '70px', zIndex: '7', left: '20vw', display: 'flex', flexWrap: 'nowrap', alignItems: 'end'}}>
-  <img src ={userInfor.user_img} style={{width: '100px', height : "100px", borderRadius: '100%', objectFit: 'cover', border: '1px solid #fafafa'}}></img>
+  <img src ={userInfor.user_img || defaultImage} style={{width: '100px', height : "100px", borderRadius: '100%', objectFit: 'cover', border: '1px solid #fafafa'}}></img>
   <div style={{fontSize: '20px',width: '300px', position: 'absolute', left: '100px', bottom: '15px', marginLeft: '18px'}}>{userInfor.full_name}</div>
 </div>}
 
@@ -77,11 +93,11 @@ const ClickRelate = () => {
 {unfinishedClick && data1 && <Box sx= {{marginTop: '50px'}}>
       <FilmPage data ={data1}></FilmPage>
   </Box>}
-  {rateClick && data1 && <Box sx= {{marginTop: '50px'}}>
+  {rateClick && data2 && <Box sx= {{marginTop: '50px'}}>
       <FilmPage data ={data2}></FilmPage>
   </Box>}
 
-{/* <Footer></Footer> */}
+<Footer></Footer>
     </Box>
   )
 }
