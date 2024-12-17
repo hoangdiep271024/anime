@@ -81,6 +81,7 @@ export default function Profile() {
         .then(response => response.json())
         .then(responseData => {
           if(responseData.success){
+            console.log(responseData)
             setLogin(true)
             setUserInfor(responseData.userInfo)
             setImage(responseData.userInfo.user_img|| defaultImage)
@@ -107,7 +108,7 @@ export default function Profile() {
             phone__number: userInfor.phone_number || '',
             gmail: userInfor.email || '',
             sex:userInfor.sex || '',
-            level: userInfor.level || '',
+            level: userInfor.japanese_level || '',
             jwt: jwt,
           });
         }

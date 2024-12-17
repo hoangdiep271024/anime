@@ -106,7 +106,7 @@ export default function Header() {
             background: "linear-gradient(90deg, #02c2f7, #400af2)",
             WebkitBackgroundClip: "text",
             color: "transparent",
-            width: "180px",
+            width: "auto",
             cursor: "pointer",
           }}
           className="logo__text"
