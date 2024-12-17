@@ -51,7 +51,7 @@ export default function FilmOverView() {
 
   const ClickAnime = (id, name) => {
     localStorage.setItem('film_id', id);
-    navigate(`/admin/film/${name}`);
+    // navigate(`/admin/film/${name}`);
   };
 
   const filteredData = data.filter((item) =>
@@ -230,7 +230,6 @@ export default function FilmOverView() {
               >
                 <EditIcon
                   onClick={(event) => {
-                    event.stopPropagation();
                     ClickEdit(item.Anime_id, item.Name)
                   }}
                   style={{
@@ -239,7 +238,6 @@ export default function FilmOverView() {
                 />
                 <DeleteIcon
                   onClick={(event) => {
-                    event.stopPropagation();
                     Delete(event, item.Anime_id);
                   }}
                   style={{

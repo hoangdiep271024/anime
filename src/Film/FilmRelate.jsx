@@ -6,6 +6,8 @@ import FilmCard from './FilmCard';
 export default function FilmRelate() {
   const [data , setData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const anime_id = Number(localStorage.getItem('film_id'));
+  console.log(anime_id)
     const fetchFilm = async () => {
         try {
           const response = await fetch('https://animetangobackend.onrender.com/knn/anime', {
@@ -13,12 +15,12 @@ export default function FilmRelate() {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({anime_id : localStorage.getItem('film_id'), n: 12}),
+            body: JSON.stringify({anime_id : anime_id, n: 12}),
           });
     
           if (response.ok) {
             const data = await response.json();
-
+            console.log(data)
             setData(data)
             setLoading(false)
     
@@ -40,8 +42,8 @@ export default function FilmRelate() {
     <>
     {!loading && <Box>
       <Box sx= {{marginLeft: '10%', fontSize: '25px', marginTop: '30px'}}>LIST FILM RELATE</Box>
-      <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '80%', marginLeft: '10%', marginTop: '25px', }}>
-       {!loading && data.map((item)=> {
+      <Box sx={{display: 'flex', flexWrap: 'wrap', gap: '20px', width: '80%', marginLeft: '10%', marginTop: '25px',justifyContent: 'center' }}>
+       {!loading && Array.isArray(data) &&data.map((item)=> {
        return (
        <FilmCard  key={item.Anime_id}
         image={item["Image URL"]}

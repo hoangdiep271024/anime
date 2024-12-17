@@ -19,7 +19,7 @@ export default function Bayes() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({jwt : localStorage.getItem('jwt'), n: 30}),
+          body: JSON.stringify({user_id : Number(localStorage.getItem('user_id')), n: 30}),
         });
   
         if (response.ok) {
@@ -53,7 +53,7 @@ export default function Bayes() {
      
     </div>
     {!loading && <Box>
-      <FilmPage data ={data.data.recommended_anime}></FilmPage>
+      <FilmPage data ={data.recommended_anime}></FilmPage>
       </Box>}
       {/* <Footer></Footer> */}
     </Box>

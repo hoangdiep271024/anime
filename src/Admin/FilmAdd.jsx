@@ -3,6 +3,7 @@ import Box from '@mui/system/Box'
 import { useState, useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
+import { TextField } from '@mui/material';
 export default function FilmAdd() {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -127,16 +128,15 @@ const [okMessage, setOkMessage]= useState('')
           width: '200px'
         }}
       >
-        <input
+        <TextField
+          label= {key}
           id={key}
           name={key}
           type="text"
           value={formData[key]}
           onChange={handleChange}
-          placeholder={key}
+
           style={{
-            padding: '8px',
-            border: '1px solid #ccc',
             borderRadius: '4px',
             outline: 'none'
           }}

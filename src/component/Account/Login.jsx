@@ -59,9 +59,15 @@ const Login = ({onSetForgotPassword, CloseIconn}) => {
         if (data.success) {
           setOkMessage(`Login successful: ${data.message}`);
           localStorage.setItem('jwt', data.jwt);
-          setTimeout(() => {
+          localStorage.setItem('user_id', data.user_id)
+          if(data.message == 'user'){setTimeout(() => {
             window.location.reload();
-          }, 1500);
+          }, 1500);}
+          else{
+            setTimeout(() => {
+              navigate('/admin');
+            }, 1500);
+          }
         } else {
           const error__alert = `Login failed: ${data.message}`;
           console.log(error__alert);

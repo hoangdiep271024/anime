@@ -148,12 +148,12 @@ const [okMessage, setOkMessage]= useState('')
          <div>
             <label>Fullname</label>
             <br></br>
-            <input className="name"  name="name" onChange={handleChange} placeholder='Họ và tên' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
+            <input className="name"  name="name" onChange={handleChange} placeholder='Full name' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div>
             <label>Username</label>
             <br></br>
-            <input className="user__name"  name="user__name" onChange={handleChange} placeholder='Tên đăng nhập' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
+            <input className="user__name"  name="user__name" onChange={handleChange} placeholder='User name' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
 
         </div>
@@ -161,7 +161,7 @@ const [okMessage, setOkMessage]= useState('')
          <div>
             <label>Phone number</label>
             <br></br>
-            <input name="phone__number" className="phone__number" onChange={handleChange} placeholder='Số điện thoại' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
+            <input name="phone__number" className="phone__number" onChange={handleChange} placeholder='Phone number' type='text' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div>
             <label>Email</label>
@@ -180,8 +180,8 @@ const [okMessage, setOkMessage]= useState('')
             <br></br>
           <select className='sex' onChange={handleChange} name="sex" style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '10vw', fontSize: '17px', paddingLeft: '7px'}}>
           <option value="" selected hidden></option>
-          <option value="1" className='sex' onChange={handleChange} name="sex">Nam</option>
-          <option value="2" className='sex' onChange={handleChange} name="sex" >Nữ</option>
+          <option value="1" className='sex' onChange={handleChange} name="sex">Male</option>
+          <option value="2" className='sex' onChange={handleChange} name="sex" >Female</option>
           </select>
          </div>
 
@@ -191,12 +191,12 @@ const [okMessage, setOkMessage]= useState('')
          <div>
             <label>Password</label>
             <br></br>
-            <input className="Password" onChange={handleChange}  name="password" placeholder='Mật khẩu' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
+            <input className="Password" onChange={handleChange}  name="password" placeholder='Password' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
          <div>
             <label>Repassword</label>
             <br></br>
-            <input className="rePassword" onChange={handleChange} name="rePassword" placeholder='Nhập lại mật khẩu' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
+            <input className="rePassword" onChange={handleChange} name="rePassword" placeholder='Repassword' type='password' style={{outline: 'none', borderRadius: '7px', border: '1px solid #e6e4e3', height: '35px', width: '24vw', fontSize: '17px', paddingLeft: '7px'}}></input>
          </div>
 
         </div>

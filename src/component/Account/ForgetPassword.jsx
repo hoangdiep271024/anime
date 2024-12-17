@@ -148,13 +148,13 @@ export default function ForgetPassword({CloseClick}) {
           
            
          } else {
-           setErrorMessage(`Đặt mật khẩu mới thất bại: ${data.message}`)
+           setErrorMessage(`Failed to set a new password: ${data.message}`)
          }
        } else {
-         console.error('Lỗi khi đặt mật khẩu:', response.statusText);
+         console.error('Error when setting a password:', response.statusText);
        }
      } catch (error) {
-       console.error('Lỗi mạng:', error);
+       console.error('Network error:', error);
      }
    };
       useEffect(() => {
@@ -266,11 +266,11 @@ export default function ForgetPassword({CloseClick}) {
         </Alert>
       )} 
     <form onSubmit={handleSubmittt}>
-      <label className="password__label" style={{color:'#000'}}>Mật khẩu mới</label>
+      <label className="password__label" style={{color:'#000'}}>New password</label>
       <br/>
       <input onChange={handleChangeee} className="password"  name="password" type="password" required style={{outline:'none', borderRadius: '5px', border:'1px solid #b8b2b2', height:'35px', width:'85%', fontSize:'17px', paddingLeft:'5px', marginTop:'10px'}}></input> 
       <br/>
-      <label className="rePassword__label" style={{color:'#000'}}>Xác nhận mật khẩu mới</label>
+      <label className="rePassword__label" style={{color:'#000'}}>Confirm new password</label>
       <br/>
       <input onChange={handleChangeee} className="rePassword"  name="rePassword" type="password" required style={{outline:'none', borderRadius: '5px', border:'1px solid #b8b2b2', height:'35px', width:'85%', fontSize:'17px', paddingLeft:'5px', marginTop:'10px'}}></input> 
        <SubmitButton type="submit" value="Lưu"/>

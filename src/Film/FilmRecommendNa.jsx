@@ -19,14 +19,14 @@ export default function FilmRecommendNa({change}) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({jwt : localStorage.getItem('jwt')})
+        body: JSON.stringify({user_id : Number(localStorage.getItem('user_id'))})
       });
 
       if (response.ok) {
         const dataa = await response.json();
         console.log(dataa)
-        setData(dataa.data.recommended_anime);
-        setVisibleMovies(dataa.data.recommended_anime.slice(0, itemsPerPage));
+        setData(dataa.recommended_anime);
+        setVisibleMovies(dataa.recommended_anime.slice(0, itemsPerPage));
         setLoading(false); 
       } else {
         console.error('Lỗi khi lấy dữ liệu:', response.statusText);
