@@ -44,7 +44,8 @@ export default function Footer() {
         marginTop: "150px",
         height: "400px",
         backgroundColor: '#eb9534',
-        zIndex: '10'
+        position: 'absolute',
+        zIndex: '1'
       }}
     >
       {/* <svg style={{ position: "fixed", top: "10vh" }}>

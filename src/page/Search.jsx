@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import FilmCard from '../Film/FilmCard';
 import FilmPage from '../Film/FilmPage';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 
 export default function Search() {
     const theme = useTheme();
@@ -51,6 +51,7 @@ export default function Search() {
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
+    {loading && <Box sx={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}><CircularProgress></CircularProgress></Box>}
     {!loading && data.anime.length > 0 && <Box>
       <FilmPage data ={data.anime}></FilmPage>
       </Box>}

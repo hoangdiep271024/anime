@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useTheme } from '@emotion/react'
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import Header from '../component/Header/Header'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FilmCard from '../Film/FilmCard'
@@ -52,7 +52,7 @@ export default function Genre() {
         <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
          
         </div>
-
+        {loading && <Box sx={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}><CircularProgress></CircularProgress></Box>}
         {!loading && <Box>
       <FilmPage data ={data}></FilmPage>
       </Box>}

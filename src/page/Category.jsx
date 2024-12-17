@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../component/Header/Header'
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import Footer from '../component/Footer/Footer'
 import { useState, useEffect } from 'react'
 import FilmCard from '../Film/FilmCard'
@@ -52,7 +52,7 @@ export default function Category() {
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
-
+    {loading && <Box sx={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}><CircularProgress></CircularProgress></Box>}
      {!loading && <Box sx={{width: '80%'}}>
       <FilmPage data ={data}></FilmPage>
       </Box>}

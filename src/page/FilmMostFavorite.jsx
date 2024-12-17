@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FilmPage from '../Film/FilmPage';
@@ -47,6 +47,7 @@ export default function FilmMostFavorite() {
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
+    {loading && <Box sx={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}><CircularProgress></CircularProgress></Box>}
     {!loading && <Box>
       <FilmPage data ={data}></FilmPage>
       </Box>}

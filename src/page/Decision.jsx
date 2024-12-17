@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import FilmCard from '../Film/FilmCard';
 import FilmPage from '../Film/FilmPage';
 import Footer from '../component/Footer/Footer';
+import { CircularProgress } from '@mui/material';
 export default function Bayes() {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
@@ -52,6 +53,7 @@ export default function Bayes() {
     <ArrowForwardIosIcon style={{marginLeft: '-7px', marginTop: '4px', fontSize: '15px'}}/>
      
     </div>
+    {loading && <Box sx={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}><CircularProgress></CircularProgress></Box>}
     {!loading && <Box>
       <FilmPage data ={data.recommended_anime}></FilmPage>
       </Box>}
